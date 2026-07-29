@@ -1,0 +1,24 @@
+{
+  "$comment": "Catalogo de regiones del pipeline. Cada entrada produce un <id>.sqlite en el Release. El bbox NO se declara aqui: se deriva de los POIs reales al construir el extracto (ver meta.bbox) y acaba en catalog.json, para que no pueda quedar desfasado respecto a los datos.",
+  "schema": 1,
+  "regions": [
+    {
+      "id": "kansai",
+      "name": "Kansai",
+      "country": "JP",
+      "source": "https://download.geofabrik.de/asia/japan/kansai-latest.osm.pbf"
+    },
+    {
+      "id": "kanto",
+      "name": "Kanto",
+      "country": "JP",
+      "source": "https://download.geofabrik.de/asia/japan/kanto-latest.osm.pbf"
+    },
+    {
+      "id": "cataluna",
+      "name": "Cataluna",
+      "country": "ES",
+      "source": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+name: Construir extractos de POIs
+
+on:
+  # Geofabrik publica a diario, pero los POIs turisticos no cambian tan rapido:
+  # mensual es de sobra y mantiene el gasto de CI a cero coste practico.
+  schedule:
+    - cron: '0 4 1 * *'   # dia 1 de cada mes, 04:00 UTC
+  workflow_dispatch:
+    inputs:
+      regions:
+        description: 'IDs de region separados por espacios (vacio = todas). Una seleccion parcial NO publica Release: solo sube un artefacto para inspeccion.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-extracts
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Instalar pyosmium
+        run: pip install --disable-pip-version-check osmium
+
+      - name: Determinar regiones a construir
+        id: plan
+        run: |
+          set -euo pipefail
+          selected='${{ inputs.regions }}'
+          if [ -z "$selected" ]; then
+            ids=$(jq -r '.regions[].id' regions.json | tr '\n' ' ')
+            echo "full=true" >> "$GITHUB_OUTPUT"
+          else
+            ids="$selected"
+            echo "full=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "ids=$ids" >> "$GITHUB_OUTPUT"
+          echo "Regiones: $ids"
+
+      - name: Construir extractos
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          for id in ${{ steps.plan.outputs.ids }}; do
+            url=$(jq -r --arg id "$id" '.regions[] | select(.id==$id) | .source // empty' regions.json)
+            if [ -z "$url" ]; then
+              echo "::error::region desconocida en regions.json: $id"
+              exit 1
+            fi
+            echo "::group::$id"
+            curl -fL --retry 3 --retry-delay 5 -o "$id.osm.pbf" "$url"
+            ls -lh "$id.osm.pbf"
+            python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"
+            # Liberar disco antes de la siguiente region: los runners traen ~14 GB
+            # libres y un .pbf de pais grande se los come.
+            rm -f "$id.osm.pbf"
+            echo "::endgroup::"
+          done
+          ls -lh dist/
+
+      - name: Generar catalog.json
+        # Solo en una construccion COMPLETA: un catalogo generado desde una seleccion
+        # parcial listaria unicamente esas regiones y dejaria al resto sin resolver
+        # en la app. Por eso una seleccion parcial no publica (ver paso siguiente).
+        if: steps.plan.outputs.full == 'true'
+        run: python scripts/build_catalog.py --regions regions.json --dist dist --out dist/catalog.json
+
+      - name: Publicar Release
+        if: steps.plan.outputs.full == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="data-$(date -u +%Y-%m-%d)"
+          notes="Extractos de POIs generados desde OpenStreetMap (Geofabrik).
+
+          Datos (c) colaboradores de OpenStreetMap, disponibles bajo ODbL 1.0.
+          https://www.openstreetmap.org/copyright
+
+          Consumidos por la app Joru. URL estable del catalogo:
+          https://github.com/${{ github.repository }}/releases/latest/download/catalog.json"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "El release $tag ya existe: se sobrescriben los assets"
+            gh release upload "$tag" dist/* --clobber
+          else
+            gh release create "$tag" dist/* \
+              --title "Extractos de POIs $tag" \
+              --notes "$notes" \
+              --latest
+          fi
+
+      - name: Subir artefacto (construccion parcial, sin publicar)
+        if: steps.plan.outputs.full != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: extractos-parciales
+          path: dist/
+          retention-days: 7

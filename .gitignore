@@ -1,0 +1,8 @@
+# Datos descargados y derivados: se regeneran en CI y se publican como assets del
+# Release, nunca se versionan (cientos de MB).
+*.osm.pbf
+*.sqlite
+dist/
+
+__pycache__/
+*.py[cod]
