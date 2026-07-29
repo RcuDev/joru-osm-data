@@ -127,6 +127,16 @@ python scripts/build_extract.py kansai.osm.pbf dist/kansai.sqlite --region kansa
 python scripts/build_catalog.py --regions regions.json --dist dist --out dist/catalog.json
 ```
 
+Si tocas el workflow, **validalo antes de empujarlo** (`pip install pyyaml`):
+
+```bash
+python scripts/lint_workflow.py
+```
+
+Caza dos errores que no se ven a simple vista: expresiones `${…}` vacias -que GitHub
+evalua incluso dentro de los comentarios de shell de un `run:`, tumbando el fichero
+entero- y expresiones interpoladas dentro de un `run:`, que hay que pasar por `env:`.
+
 ---
 
 ## Licencia y atribucion

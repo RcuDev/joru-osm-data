@@ -38,11 +38,12 @@ jobs:
         id: plan
         run: |
           set -euo pipefail
-          # SELECTED llega por env, no interpolado en el script: el valor lo escribe
-          # quien lanza el workflow y un '${{ }}' dentro del shell seria inyeccion.
-          # ${VAR:-} y no $VAR: en el disparo por 'schedule' el contexto inputs no
-          # existe, y con `set -u` una variable sin definir tumbaria la ejecucion
-          # automatica del dia 1 a las 4:00 sin que nadie lo viera.
+          # SELECTED llega por env (ver abajo), NO interpolando la expresion del input
+          # aqui dentro: ese valor lo escribe quien lanza el workflow, asi que meterlo
+          # en el script seria inyeccion de comandos.
+          # Se usa la forma ${VAR:-} en vez de $VAR porque en el disparo por 'schedule'
+          # el contexto de inputs no existe, y con `set -u` una variable sin definir
+          # tumbaria la ejecucion automatica del dia 1 a las 4:00 sin que nadie lo viera.
           selected="${SELECTED:-}"
           if [ -z "$selected" ]; then
             ids=$(jq -r '.regions[].id' regions.json | tr '\n' ' ')
@@ -95,6 +96,7 @@ jobs:
         if: steps.plan.outputs.full == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           tag="data-$(date -u +%Y-%m-%d)"
@@ -104,7 +106,7 @@ jobs:
           https://www.openstreetmap.org/copyright
 
           Consumidos por la app Joru. URL estable del catalogo:
-          https://github.com/${{ github.repository }}/releases/latest/download/catalog.json"
+          https://github.com/$REPO/releases/latest/download/catalog.json"
 
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "El release $tag ya existe: se sobrescriben los assets"
