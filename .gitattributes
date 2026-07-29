@@ -1,0 +1,5 @@
+# Los scripts y el workflow se ejecutan en runners Linux: LF siempre en el repo,
+# aunque se editen desde Windows.
+* text=auto eol=lf
+*.png binary
+*.sqlite binary
