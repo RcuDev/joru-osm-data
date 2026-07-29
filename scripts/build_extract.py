@@ -86,12 +86,30 @@ FILTERS: dict[str, frozenset[str]] = {
     "landuse": frozenset({"cemetery"}),
 }
 
-# Tags que la app lee de verdad (ver PoiSearchTool.toPoiCandidate). Todo lo demas se
-# descarta: OSM trae cientos de tags por objeto y solo estos acaban en PoiCandidate.
-TAG_KEYS_EXACT = frozenset({
+# Tags que la app lee de verdad. Todo lo demas se descarta: OSM trae cientos de tags
+# por objeto y solo estos acaban en PoiCandidate.
+#
+# Las claves de FILTERS entran TODAS (son las que clasifican el POI). El resto se
+# eligio midiendo su cobertura REAL sobre los POIs ya filtrados, no sobre todo OSM:
+#   religion      12,8% Kansai / 7,3% Cataluna -> "Templo budista" vs "Santuario sintoista",
+#                 la desambiguacion mas util que existe en Kioto
+#   denomination   0,9% / 6,0%                 -> confesion concreta, acompana a religion
+#   wikipedia      3,3% / 14,5%                -> 2a senal de notabilidad, independiente de wikidata
+#   wheelchair     2,4% / 4,3%                 -> MobilityLevel.REDUCED, que hoy no tiene NINGUN dato.
+#                 Cobertura demasiado baja para filtrar (vaciaria el plan), suficiente para
+#                 no proponer nunca un `wheelchair=no` a quien pidio movilidad reducida.
+# Descartados por cobertura insuficiente: heritage (0,3-0,5%, y con valores incoherentes
+# 'yes'/'1'/'2'/'4' -> no sirve para una insignia UNESCO), stars (1,1%/0,1%), min_age (0,1%).
+#
+# Las claves de FILTERS se incluyen DERIVANDO de FILTERS, no repitiendolas a mano: al
+# ampliar el filtro con man_made/waterway/place/landuse se me quedaron fuera de esta
+# lista, asi que los puentes, torres, cascadas, plazas y cementerios entraban como filas
+# pero SIN el tag que los clasifica -> la app los habria descartado por no tener
+# categoria. Derivandolo, el desfase es imposible.
+TAG_KEYS_EXACT = frozenset(FILTERS) | frozenset({
     "name", "int_name",
-    "amenity", "tourism", "historic", "leisure", "natural", "shop",
     "cuisine", "fee", "charge", "wikidata", "opening_hours",
+    "religion", "denomination", "wikipedia", "wheelchair",
 })
 # name:en, name:es, name:ja-Latn, name:ja_rm... y diet:vegan, diet:halal...
 TAG_KEY_PREFIXES = ("name:", "diet:")
@@ -100,10 +118,14 @@ EARTH_RADIUS_KM = 6371.0
 
 
 def filter_fingerprint() -> str:
-    """Huella estable del filtro, para que la app detecte un extracto desfasado."""
+    """Huella estable del CONTRATO de extraccion, para que la app detecte un extracto
+    desfasado. Cubre el filtro de inclusion Y la whitelist de tags: si solo cubriera el
+    filtro, anadir un tag nuevo cambiaria lo que contienen las filas sin cambiar la
+    huella, y la app no podria enterarse."""
     canonical = ";".join(
         f"{key}={','.join(sorted(values))}" for key, values in sorted(FILTERS.items())
     )
+    canonical += "|tags=" + ",".join(sorted(TAG_KEYS_EXACT | set(TAG_KEY_PREFIXES)))
     return hashlib.sha256(canonical.encode()).hexdigest()[:16]
 
 
