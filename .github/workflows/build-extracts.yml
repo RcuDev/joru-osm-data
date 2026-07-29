@@ -85,6 +85,36 @@ jobs:
           done
           ls -lh dist/
 
+      - name: Resumen de la ejecucion
+        # Deja a la vista QUE CODIGO construyo estos extractos. Un "Re-run jobs" sobre
+        # una ejecucion antigua rejecuta el COMMIT ORIGINAL, no el actual: sin esto, el
+        # Release sale con fecha nueva y contenido viejo y no hay forma de notarlo
+        # (paso real, 2026-07-29). Para tomar el ultimo commit hay que lanzar una
+        # ejecucion NUEVA con "Run workflow".
+        env:
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref_name }}
+          ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          fingerprint=$(python -c "import sys; sys.path.insert(0,'scripts'); import build_extract; print(build_extract.filter_fingerprint())")
+          echo "FINGERPRINT=$fingerprint" >> "$GITHUB_ENV"
+          {
+            echo "### Extractos construidos"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| commit | \`${SHA:0:7}\` (\`$REF\`) |"
+            echo "| intento | #$ATTEMPT |"
+            echo "| huella del filtro | \`$fingerprint\` |"
+            echo
+            if [ "$ATTEMPT" != "1" ]; then
+              echo "> **Aviso:** esto es un *re-run*, asi que usa el commit \`${SHA:0:7}\`,"
+              echo "> NO el ultimo de la rama. Si esperabas cambios recientes, lanza una"
+              echo "> ejecucion nueva con **Run workflow**."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Generar catalog.json
         # Solo en una construccion COMPLETA: un catalogo generado desde una seleccion
         # parcial listaria unicamente esas regiones y dejaria al resto sin resolver
@@ -97,10 +127,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           tag="data-$(date -u +%Y-%m-%d)"
           notes="Extractos de POIs generados desde OpenStreetMap (Geofabrik).
+
+          Construidos desde el commit \`${SHA:0:7}\`, huella del filtro \`$FINGERPRINT\`.
 
           Datos (c) colaboradores de OpenStreetMap, disponibles bajo ODbL 1.0.
           https://www.openstreetmap.org/copyright
