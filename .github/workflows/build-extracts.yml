@@ -1,16 +1,26 @@
 name: Construir extractos de POIs
 
 on:
-  # Geofabrik publica a diario, pero los POIs turisticos no cambian tan rapido:
-  # mensual es de sobra y mantiene el gasto de CI a cero coste practico.
+  # TRIMESTRAL, no mensual. El mundo entero son ~83 GB de .osm.pbf descargados de
+  # Geofabrik, que es gratuito y lo mantienen voluntarios: mensual serian ~1 TB al ano
+  # y seria abusar. Los POIs turisticos no cambian a ese ritmo -un templo lleva siglos
+  # donde esta-, asi que un trimestre de desfase no le cuesta nada al viajero.
   schedule:
-    - cron: '0 4 1 * *'   # dia 1 de cada mes, 04:00 UTC
+    - cron: '0 4 1 1,4,7,10 *'   # dia 1 de enero, abril, julio y octubre, 04:00 UTC
   workflow_dispatch:
     inputs:
-      regions:
-        description: 'IDs de region separados por espacios (vacio = todas). Una seleccion parcial NO publica Release: solo sube un artefacto para inspeccion.'
+      scope:
+        description: 'Continentes o ids de region separados por espacios (vacio = el mundo). Ej: europe'
         required: false
         default: ''
+      repair:
+        description: 'Reparar: construir solo las regiones que falten en el Release vigente'
+        type: boolean
+        default: false
+      publish:
+        description: 'Publicar el Release (desmarcar para una prueba que no toque el catalogo vivo)'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -20,54 +30,111 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  # ---------------------------------------------------------------------------
+  # 1. Que hay que construir y en cuantos trozos
+  # ---------------------------------------------------------------------------
+  plan:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
-
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      empty: ${{ steps.plan.outputs.empty }}
+      regions: ${{ steps.plan.outputs.regions }}
+      shards: ${{ steps.plan.outputs.shards }}
+      tag: ${{ steps.release.outputs.tag }}
+      fingerprint: ${{ steps.release.outputs.fingerprint }}
     steps:
       - uses: actions/checkout@v5
-
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
+      - name: Assets del Release vigente
+        # Hacen falta para el modo reparacion (que falta) y para heredar en el catalogo
+        # las regiones que este build no reconstruye.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view --json assets --jq '.assets[].name' > present.txt 2>/dev/null; then
+            echo "El Release vigente tiene $(grep -c '\.sqlite$' present.txt || true) extractos"
+          else
+            : > present.txt
+            echo "No hay ningun Release publicado todavia"
+          fi
+
+      - name: Repartir la matriz
+        id: plan
+        env:
+          SCOPE: ${{ inputs.scope }}
+          REPAIR: ${{ inputs.repair }}
+        run: |
+          set -euo pipefail
+          # SCOPE lo escribe quien lanza el workflow: llega por env y lo valida el
+          # script, nunca interpolado en el shell (seria inyeccion de comandos).
+          args=""
+          if [ "${REPAIR:-false}" = "true" ]; then args="--repair"; fi
+          python scripts/plan_build.py --regions regions.json \
+            --scope "${SCOPE:-}" --present present.txt $args
+
+      - name: Preparar el Release
+        id: release
+        if: steps.plan.outputs.empty != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPAIR: ${{ inputs.repair }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          fingerprint=$(python -c "import sys; sys.path.insert(0,'scripts'); import build_extract; print(build_extract.filter_fingerprint())")
+          echo "fingerprint=$fingerprint" >> "$GITHUB_OUTPUT"
+
+          if [ "${REPAIR:-false}" = "true" ]; then
+            # Reparar NO crea un Release nuevo: rellena el vigente, que es el que la
+            # app esta consumiendo ahora mismo por /releases/latest/download/.
+            tag=$(gh release view --json tagName --jq .tagName)
+            echo "Reparando el Release vigente: $tag"
+          else
+            tag="data-$(date -u +%Y-%m-%d)"
+            if ! gh release view "$tag" >/dev/null 2>&1; then
+              # Se crea como BORRADOR: mientras los shards suben sus .sqlite, el
+              # Release esta a medias, y /releases/latest/download/ debe seguir
+              # sirviendo el anterior, completo. Lo publica el job final.
+              gh release create "$tag" --draft --title "Extractos de POIs $tag" --notes "En construccion..."
+            fi
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+  # ---------------------------------------------------------------------------
+  # 2. Construir, repartido por peso
+  # ---------------------------------------------------------------------------
+  build:
+    needs: plan
+    if: needs.plan.outputs.empty != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      # Geofabrik es gratuito y lo mantienen voluntarios: 6 descargas en paralelo
+      # aprovechan la matriz sin convertirla en una tromba contra su servidor.
+      max-parallel: 6
+      matrix:
+        shard: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
       - name: Instalar pyosmium
         run: pip install --disable-pip-version-check osmium
 
-      - name: Determinar regiones a construir
-        id: plan
-        run: |
-          set -euo pipefail
-          # SELECTED llega por env (ver abajo), NO interpolando la expresion del input
-          # aqui dentro: ese valor lo escribe quien lanza el workflow, asi que meterlo
-          # en el script seria inyeccion de comandos.
-          # Se usa la forma ${VAR:-} en vez de $VAR porque en el disparo por 'schedule'
-          # el contexto de inputs no existe, y con `set -u` una variable sin definir
-          # tumbaria la ejecucion automatica del dia 1 a las 4:00 sin que nadie lo viera.
-          selected="${SELECTED:-}"
-          if [ -z "$selected" ]; then
-            ids=$(jq -r '.regions[].id' regions.json | tr '\n' ' ')
-            echo "full=true" >> "$GITHUB_OUTPUT"
-          else
-            for id in $selected; do
-              case "$id" in
-                *[!a-z0-9_-]*) echo "::error::id de region invalido: $id"; exit 1 ;;
-              esac
-            done
-            ids="$selected"
-            echo "full=false" >> "$GITHUB_OUTPUT"
-          fi
-          echo "ids=$ids" >> "$GITHUB_OUTPUT"
-          echo "Regiones: $ids"
-        env:
-          SELECTED: ${{ inputs.regions }}
-
       - name: Construir extractos
         env:
-          IDS: ${{ steps.plan.outputs.ids }}
+          IDS: ${{ matrix.shard.regions }}
+          SHARD: ${{ matrix.shard.name }}
         run: |
           set -euo pipefail
           mkdir -p dist
+          echo "Shard $SHARD"
           for id in ${IDS:-}; do
             url=$(jq -r --arg id "$id" '.regions[] | select(.id==$id) | .source // empty' regions.json)
             if [ -z "$url" ]; then
@@ -78,59 +145,90 @@ jobs:
             curl -fL --retry 3 --retry-delay 5 -o "$id.osm.pbf" "$url"
             ls -lh "$id.osm.pbf"
             python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"
-            # Liberar disco antes de la siguiente region: los runners traen ~14 GB
-            # libres y un .pbf de pais grande se los come.
+            # Liberar disco antes de la siguiente: los runners traen ~14 GB libres y
+            # un .pbf de pais grande se los come.
             rm -f "$id.osm.pbf"
             echo "::endgroup::"
           done
+          df -h / | tail -1
           ls -lh dist/
 
-      - name: Resumen de la ejecucion
-        # Deja a la vista QUE CODIGO construyo estos extractos. Un "Re-run jobs" sobre
-        # una ejecucion antigua rejecuta el COMMIT ORIGINAL, no el actual: sin esto, el
-        # Release sale con fecha nueva y contenido viejo y no hay forma de notarlo
-        # (paso real, 2026-07-29). Para tomar el ultimo commit hay que lanzar una
-        # ejecucion NUEVA con "Run workflow".
-        env:
-          SHA: ${{ github.sha }}
-          REF: ${{ github.ref_name }}
-          ATTEMPT: ${{ github.run_attempt }}
-        run: |
-          set -euo pipefail
-          fingerprint=$(python -c "import sys; sys.path.insert(0,'scripts'); import build_extract; print(build_extract.filter_fingerprint())")
-          echo "FINGERPRINT=$fingerprint" >> "$GITHUB_ENV"
-          {
-            echo "### Extractos construidos"
-            echo
-            echo "| | |"
-            echo "|---|---|"
-            echo "| commit | \`${SHA:0:7}\` (\`$REF\`) |"
-            echo "| intento | #$ATTEMPT |"
-            echo "| huella del filtro | \`$fingerprint\` |"
-            echo
-            if [ "$ATTEMPT" != "1" ]; then
-              echo "> **Aviso:** esto es un *re-run*, asi que usa el commit \`${SHA:0:7}\`,"
-              echo "> NO el ultimo de la rama. Si esperabas cambios recientes, lanza una"
-              echo "> ejecucion nueva con **Run workflow**."
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Metadatos de las regiones de este shard
+        # El .sqlite sube directo al Release y de aqui solo sale este JSON minusculo.
+        # Mover los GB dos veces (artefacto y descarga en el job final) costaria mas
+        # tiempo que construirlos.
+        run: python scripts/build_catalog.py --regions regions.json --dist dist --emit-meta meta
 
-      - name: Generar catalog.json
-        # Solo en una construccion COMPLETA: un catalogo generado desde una seleccion
-        # parcial listaria unicamente esas regiones y dejaria al resto sin resolver
-        # en la app. Por eso una seleccion parcial no publica (ver paso siguiente).
-        if: steps.plan.outputs.full == 'true'
-        run: python scripts/build_catalog.py --regions regions.json --dist dist --out dist/catalog.json
-
-      - name: Publicar Release
-        if: steps.plan.outputs.full == 'true'
+      - name: Subir los extractos al Release
         env:
           GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-          SHA: ${{ github.sha }}
+          TAG: ${{ needs.plan.outputs.tag }}
         run: |
           set -euo pipefail
-          tag="data-$(date -u +%Y-%m-%d)"
+          gh release upload "$TAG" dist/*.sqlite --clobber
+
+      - name: Guardar los metadatos
+        uses: actions/upload-artifact@v4
+        with:
+          name: meta-${{ matrix.shard.name }}
+          path: meta/
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 3. Un solo catalogo con TODAS las regiones, y publicar
+  # ---------------------------------------------------------------------------
+  finalize:
+    needs: [plan, build]
+    # `always()` para que un shard caido no impida publicar lo que si salio: el
+    # catalogo hereda del Release anterior las regiones que falten y el job de
+    # reparacion las reconstruye despues.
+    if: always() && needs.plan.outputs.empty != 'true' && inputs.publish != false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Recoger los metadatos de todos los shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: meta-*
+          merge-multiple: true
+          path: meta
+
+      - name: Catalogo anterior (para heredar lo no reconstruido)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+        run: |
+          set -euo pipefail
+          # El catalogo NO se puede generar por shard: la app necesita todas las
+          # regiones en uno. Y una region que este build no toco debe seguir en el
+          # catalogo, con sus datos de antes.
+          gh release download "$TAG" --pattern catalog.json --dir base 2>/dev/null \
+            || gh release download --pattern catalog.json --dir base 2>/dev/null \
+            || echo "sin catalogo previo"
+
+      - name: Generar catalog.json
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          base=""
+          if [ -f base/catalog.json ]; then base="--base base/catalog.json"; fi
+          python scripts/build_catalog.py --regions regions.json --dist dist \
+            --meta meta --out dist/catalog.json $base
+
+      - name: Publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          FINGERPRINT: ${{ needs.plan.outputs.fingerprint }}
+        run: |
+          set -euo pipefail
+          gh release upload "$TAG" dist/catalog.json --clobber
           notes="Extractos de POIs generados desde OpenStreetMap (Geofabrik).
 
           Construidos desde el commit \`${SHA:0:7}\`, huella del filtro \`$FINGERPRINT\`.
@@ -140,21 +238,47 @@ jobs:
 
           Consumidos por la app Joru. URL estable del catalogo:
           https://github.com/$REPO/releases/latest/download/catalog.json"
+          # Sale del estado de borrador solo ahora, con el catalogo ya subido: hasta
+          # este momento /releases/latest/download/ seguia sirviendo el anterior entero.
+          gh release edit "$TAG" --draft=false --latest --notes "$notes"
 
-          if gh release view "$tag" >/dev/null 2>&1; then
-            echo "El release $tag ya existe: se sobrescriben los assets"
-            gh release upload "$tag" dist/* --clobber
-          else
-            gh release create "$tag" dist/* \
-              --title "Extractos de POIs $tag" \
-              --notes "$notes" \
-              --latest
-          fi
-
-      - name: Subir artefacto (construccion parcial, sin publicar)
-        if: steps.plan.outputs.full != 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: extractos-parciales
-          path: dist/
-          retention-days: 7
+      - name: Resumen
+        # Deja a la vista QUE CODIGO construyo estos extractos. Un "Re-run jobs" sobre
+        # una ejecucion antigua rejecuta el COMMIT ORIGINAL, no el actual: sin esto, el
+        # Release sale con fecha nueva y contenido viejo y no hay forma de notarlo
+        # (paso real, 2026-07-29). Para tomar el ultimo commit hay que lanzar una
+        # ejecucion NUEVA con "Run workflow".
+        env:
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref_name }}
+          ATTEMPT: ${{ github.run_attempt }}
+          TAG: ${{ needs.plan.outputs.tag }}
+          FINGERPRINT: ${{ needs.plan.outputs.fingerprint }}
+          REGIONS: ${{ needs.plan.outputs.regions }}
+          SHARDS: ${{ needs.plan.outputs.shards }}
+          BUILD_RESULT: ${{ needs.build.result }}
+        run: |
+          set -euo pipefail
+          {
+            echo "### Extractos construidos"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| release | \`$TAG\` |"
+            echo "| regiones construidas | $REGIONS en $SHARDS shards |"
+            echo "| shards | $BUILD_RESULT |"
+            echo "| commit | \`${SHA:0:7}\` (\`$REF\`) |"
+            echo "| intento | #$ATTEMPT |"
+            echo "| huella del filtro | \`$FINGERPRINT\` |"
+            echo
+            if [ "$BUILD_RESULT" != "success" ]; then
+              echo "> **Algun shard fallo.** El catalogo hereda esas regiones del Release"
+              echo "> anterior. Lanza el workflow con **repair** marcado para rellenarlas."
+              echo
+            fi
+            if [ "$ATTEMPT" != "1" ]; then
+              echo "> **Aviso:** esto es un *re-run*, asi que usa el commit \`${SHA:0:7}\`,"
+              echo "> NO el ultimo de la rama. Si esperabas cambios recientes, lanza una"
+              echo "> ejecucion nueva con **Run workflow**."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

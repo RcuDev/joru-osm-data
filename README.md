@@ -17,9 +17,13 @@ consultas seguidas y acababa en cascada de reintentos, minutos de espera y plane
 incompletos.
 
 Los datos de OSM se distribuyen tambien como **descarga masiva sin cuota**
-([Geofabrik](https://download.geofabrik.de/)). Este pipeline los preprocesa una vez al
-mes y publica un extracto por region, de modo que la app hace **una descarga** y a
+([Geofabrik](https://download.geofabrik.de/)). Este pipeline los preprocesa cada
+trimestre y publica un extracto por region, de modo que la app hace **una descarga** y a
 partir de ahi consulta en milisegundos y sin red.
+
+La cobertura es **mundial**: 512 regiones, ~83 GB de `.osm.pbf` de origen y ~4,3 GB de
+SQLite publicado. El 99,7% de las localidades del mundo resuelven a una region de menos
+de 50 MB.
 
 ---
 
@@ -28,15 +32,34 @@ partir de ahi consulta en milisegundos y sin red.
 ```
 Geofabrik (.osm.pbf)
       │
+      ├─ scripts/build_regions.py    corta el mundo en regiones -> regions.json
+      │                              (a mano, cuando cambie el indice de Geofabrik)
+      ├─ scripts/plan_build.py       reparte esas regiones entre los shards del workflow
       ├─ scripts/build_extract.py    filtra POIs turisticos, calcula centroide y
       │                              tamano, poda tags -> <region>.sqlite
-      ├─ scripts/build_catalog.py    reune los extractos -> catalog.json
+      ├─ scripts/build_catalog.py    reune los metadatos -> catalog.json
       │
       └─ GitHub Release              assets publicos servidos por el CDN de GitHub
 ```
 
-El workflow `.github/workflows/build-extracts.yml` corre **el dia 1 de cada mes** y
-tambien a mano (`workflow_dispatch`).
+El workflow `.github/workflows/build-extracts.yml` corre **el dia 1 de enero, abril,
+julio y octubre**, y tambien a mano (`workflow_dispatch`).
+
+Se construye en **matriz**: `plan_build.py` reparte las regiones en shards de ~4 GB
+(25 para el mundo, 9 para Europa) para que ningun job dure horas y un fallo se relance
+solo. Cada shard sube sus `.sqlite` directamente al Release —que se crea como
+**borrador**, asi que `/releases/latest/download/` sigue sirviendo el anterior entero
+mientras tanto— y deja solo unos metadatos minusculos como artefacto. Un job final los
+reune, genera `catalog.json` y publica. El catalogo **no se puede generar por shard**:
+la app necesita todas las regiones en uno.
+
+### Entradas de `workflow_dispatch`
+
+| Entrada | Para que |
+|---|---|
+| `scope` | Continentes o ids de region separados por espacios. Vacio = el mundo. Ej.: `europe`, `asia africa`, `kansai kanto` |
+| `repair` | Construye **solo** las regiones que falten en el Release vigente y lo rellena en su sitio, sin crear uno nuevo. Para el trimestre en que un shard falla |
+| `publish` | Desmarcar para probar sin tocar el catalogo vivo |
 
 > **Aviso:** GitHub **desactiva los workflows programados tras 60 dias sin actividad en el
 > repositorio**, y las ejecuciones del propio workflow NO cuentan como actividad. Como aqui
@@ -61,10 +84,10 @@ https://github.com/<owner>/joru-osm-data/releases/latest/download/<region>.sqlit
 
 ```jsonc
 {
-  "schema": 1,
+  "schema": 2,
   "generated_at": "2026-07-29T10:00:00Z",
-  "generator_version": "1",
-  "filter_fingerprint": "67685a26b631f4d5",
+  "generator_version": "2",
+  "filter_fingerprint": "7fbf39c1475f41e5",
   "regions": [
     {
       "id": "kansai",
@@ -76,11 +99,22 @@ https://github.com/<owner>/joru-osm-data/releases/latest/download/<region>.sqlit
       "sha256": "…",
       "poi_count": 105328,
       "osm_timestamp": "2026-07-28T20:21:00Z",
-      "bbox": [134.278, 33.436, 136.984, 35.775]   // [minLon, minLat, maxLon, maxLat]
+      "bbox":  [134.278, 33.436, 136.984, 35.775],  // [minLon, minLat, maxLon, maxLat]
+      "rects": [[135.0, 34.5, 135.75, 35.25], …]    // donde hay POIs de verdad
     }
   ]
 }
 ```
+
+**`rects` es lo que la app usa para elegir region; `bbox` es solo informativo.** Un
+unico bbox miente: el de Portugal se estira hasta las Azores y acaba siendo mayor que el
+de Espana, asi que "la region de bbox mas pequeno que contiene el destino" mandaba Lisboa
+al extracto espanol. Medido sobre las 235.063 localidades del mundo de mas de 500
+habitantes, el bbox unico manda al **22%** de los destinos a una region que no los
+contiene (Argel a `spain`, Toronto a `us/new-york`, Santiago de Chile a `argentina`), y
+ademas hay 10 regiones que cruzan el antimeridiano —Alaska, Fiyi, Nueva Zelanda,
+Chukotka— cuyo bbox va de -180 a 180 y contiene **cualquier** punto del planeta. Con los
+rectangulos, derivados de los POIs reales en una rejilla de 0,25°, ese error es cero.
 
 ### `<region>.sqlite`
 
@@ -102,19 +136,41 @@ notabilidad) vive en la app, para poder ajustarla sin regenerar los extractos.
 
 ---
 
-## Anadir una region
+## El corte del mundo (`regions.json`)
 
-1. Buscar el extracto en <https://download.geofabrik.de/> (cuanto mas ajustado, mejor).
-2. Anadir la entrada a `regions.json`:
-   ```json
-   { "id": "toscana", "name": "Toscana", "country": "IT",
-     "source": "https://download.geofabrik.de/europe/italy/centro-latest.osm.pbf" }
-   ```
-3. Lanzar el workflow a mano. Con el campo *regions* vacio reconstruye todo y publica;
-   con una seleccion parcial solo sube un artefacto para inspeccion, sin publicar
-   (un catalogo parcial dejaria al resto de regiones sin resolver en la app).
+**Generado, no escrito a mano.** `regions.json` sale de `scripts/build_regions.py`, que
+recorta el indice oficial de Geofabrik. Regenerarlo solo hace falta cuando Geofabrik
+cambie su indice:
 
-El bbox **no** se declara: se deriva de los POIs reales de cada extracto.
+```bash
+pip install numpy
+python scripts/build_regions.py --out regions.json --verify
+```
+
+El corte es **geometrico**, no estructural, porque el arbol del indice miente de tres
+formas: publica paquetes combinados que solapan con las regiones reales (`dach`, `alps`,
+`us-south`…, que sumados daban 114,9 GB, mas que el planeta entero); la jerarquia no es
+la del campo `parent` (los estados de EE.UU. cuelgan de `north-america`, no de `us`); y
+**los hijos no son una particion del padre** (`enfield` figura como hijo de
+`greater-london`, asi que "prefiere los hijos" se quedaba con un barrio y tiraba el
+resto de Londres). El algoritmo acepta regiones de menor a mayor area salvo que su
+territorio ya lo cubran las aceptadas.
+
+Luego **poda por demanda**: quita las regiones que ningun destino elegiria jamas,
+medido contra las 235.063 localidades del mundo de mas de 500 habitantes (GeoNames).
+Son padres cuyos hijos ya particionan el territorio (`us` frente a sus estados,
+`norway` frente a ostlandet/vestlandet/nord-norge) y regiones imposibles de bajar en un
+movil (`asia` son 799 MB de SQLite). Eso baja el corte de 530 a 512 regiones y de
+138,5 GB a 83,2 GB. Podar por **area** en vez de por demanda no funciona: se probo, y
+colapsaba el corte a 28 regiones dejando a Londres resolviendo a `europe` entero.
+
+`--verify` comprueba 36 ciudades de los casos limite (Londres, Enfield, Jersey, Isla de
+Man, Canarias, Azores, Comoras, Kaliningrado, Ceuta, Groenlandia, Tahiti…). **Cada una
+cazo un fallo real.** Devuelve exit 1 si alguna se queda sin cobertura: no des por bueno
+un corte que no pase esta verificacion.
+
+Lo que quede fuera del corte (Miquelon, Grytviken, Diego Garcia: territorios que
+Geofabrik no publica) cae al respaldo de emergencia de la app.
 
 ---
 

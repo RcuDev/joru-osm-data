@@ -35,8 +35,17 @@ Voraz por area ascendente sobre los poligonos reales del indice:
 
 Se valida con `--verify`, que comprueba ciudades reales de los casos limite.
 
+PODA (medida el 2026-07-29, ver PRUNE mas abajo)
+------------------------------------------------
+El recubrimiento en bruto son 530 regiones y 138,5 GB de descarga en CI, MAS que el
+planeta entero (87 GB), porque acepta regiones que se solapan. La poda quita las que
+NINGUN destino del mundo elegiria jamas. El criterio NO es el area -eso ya se intento y
+colapso el corte a 28 regiones dejando a Londres en `europe`-: es la DEMANDA, medida
+sobre las 235.063 localidades de GeoNames de mas de 500 habitantes.
+
 Uso:
-    python scripts/build_regions.py --out regions.world.json --sizes --verify
+    pip install numpy
+    python scripts/build_regions.py --out regions.world.json --verify
 """
 
 
@@ -44,10 +53,15 @@ from __future__ import annotations
 
 import argparse
 import collections
+import csv
+import io
 import json
 import urllib.request
+import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+import numpy as np
 
 # CON geometria: el corte es geometrico, asi que los poligonos son imprescindibles.
 GEOFABRIK_INDEX = "https://download.geofabrik.de/index-v1.json"
@@ -58,6 +72,29 @@ USER_AGENT = "joru-osm-data/1.0 (+https://github.com/RcuDev/joru-osm-data)"
 # esta dominado por carreteras y edificios, no por POIs, asi que el ratio real sera
 # MENOR: sirve como techo, no como suelo.
 SQLITE_RATIO = 0.052
+
+# Demanda real para decidir que regiones sobran: todas las localidades del mundo de mas
+# de 500 habitantes (GeoNames, CC-BY). Es un fichero estable de ~10 MB y este script se
+# ejecuta a mano, no en CI, asi que depender de la red aqui no rompe nada automatico.
+GEONAMES_CITIES = "http://download.geonames.org/export/dump/cities500.zip"
+
+# Lado de la celda con la que se rasteriza el mundo, en grados (~28 km en el ecuador).
+# Es la MISMA rejilla con la que build_extract.py marca donde hay POIs y con la que el
+# catalogo describe cada region: si se cambia aqui, cambiarla alli.
+CELL_DEG = 0.25
+NX, NY = int(360 / CELL_DEG), int(180 / CELL_DEG)
+
+# Una region que ningun destino elegiria jamas es 100% coste: se descarga en CI, se
+# publica en el Release y no la baja nadie. Se quitan dos familias, ambas MEDIDAS:
+#   - las que no elige NI UNA de las 235.063 localidades (padres cuyos hijos ya
+#     particionan el territorio: `us` frente a sus estados, `norway` frente a
+#     ostlandet/vestlandet/nord-norge, `japan` frente a kanto/kansai/chubu...);
+#   - las que elige un punado pero pesan tanto que un movil no puede bajarlas
+#     (`asia` son 799 MB de SQLite: no es una region, es un castigo).
+# Lo que quede fuera del corte cae al respaldo de emergencia (Overpass), que es
+# exactamente para lo que existe.
+MIN_DEMAND_FOR_HUGE = 50
+HUGE_SQLITE_MB = 100
 
 
 def fetch_index() -> list[dict]:
@@ -159,14 +196,94 @@ def world_cover(props: list[dict], threshold: float = 0.90) -> list[dict]:
             continue   # redundante: sus piezas ya estan dentro (paquete combinado)
         accepted.append((prop, box))
 
-    # PENDIENTE (siguiente sesion): reducir el solape. Este corte descarga 138,5 GB de
-    # pbf, mas que el planeta (87 GB), porque acepta regiones que se solapan
-    # parcialmente. Un intento de segunda pasada "quita lo que ya cubren las demas"
-    # colapso el corte a 28 regiones y dejo a Londres resolviendo a `europe` entero
-    # (~1 GB): inservible en un movil. Hay que hacerlo conservando la GRANULARIDAD, no
-    # solo el area total. Mientras tanto se prefiere pasarse de descarga en CI antes que
-    # dejar agujeros o regiones gigantes: la verificacion por ciudades manda.
+    # Esto deja SOLAPE: 530 regiones y 138,5 GB, mas que el planeta entero. Reducirlo
+    # por area no funciona (colapsaba el corte a 28 regiones y dejaba a Londres en
+    # `europe`); se reduce por DEMANDA en prune_cover(), que es la siguiente pasada.
     return [prop for prop, _ in accepted]
+
+
+def cells_of(geom) -> np.ndarray:
+    """Celdas de la rejilla cuyo centro cae dentro del poligono.
+
+    Scanline vectorizado: por cada fila de la rejilla se cruzan de golpe todas las
+    aristas de todos los anillos. Un punto-en-poligono por celda seria O(celdas x
+    aristas) y `asia` tiene ~50.000 aristas: no acabaria.
+    """
+    rings = _rings(geom)
+    if not rings:
+        return np.zeros((0, 2), dtype=np.int32)
+    x1 = np.concatenate([np.array([p[0] for p in r[:-1]]) for r in rings])
+    y1 = np.concatenate([np.array([p[1] for p in r[:-1]]) for r in rings])
+    x2 = np.concatenate([np.array([p[0] for p in r[1:]]) for r in rings])
+    y2 = np.concatenate([np.array([p[1] for p in r[1:]]) for r in rings])
+    out = []
+    for j in range(max(0, int((y1.min() + 90) / CELL_DEG)),
+                   min(NY - 1, int((y1.max() + 90) / CELL_DEG)) + 1):
+        y = -90 + (j + 0.5) * CELL_DEG
+        crosses = (y1 <= y) != (y2 <= y)
+        if not crosses.any():
+            continue
+        xs = np.sort(x1[crosses] + (y - y1[crosses]) * (x2[crosses] - x1[crosses])
+                     / (y2[crosses] - y1[crosses]))
+        for a, b in zip(xs[0::2], xs[1::2]):
+            ia = max(0, int(np.ceil((a + 180) / CELL_DEG - 0.5)))
+            ib = min(NX - 1, int(np.floor((b + 180) / CELL_DEG - 0.5)))
+            if ib >= ia:
+                out.append(np.stack([np.arange(ia, ib + 1), np.full(ib - ia + 1, j)], axis=1))
+    return np.concatenate(out) if out else np.zeros((0, 2), dtype=np.int32)
+
+
+def fetch_cities(cache: Path) -> list[tuple[float, float]]:
+    """Localidades del mundo de mas de 500 habitantes (GeoNames)."""
+    if not cache.exists():
+        request = urllib.request.Request(GEONAMES_CITIES, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(request, timeout=300) as response:
+            cache.write_bytes(response.read())
+    with zipfile.ZipFile(cache) as z:
+        text = z.read("cities500.txt").decode("utf-8")
+    rows = csv.reader(io.StringIO(text), delimiter="\t", quoting=csv.QUOTE_NONE)
+    return [(float(r[5]), float(r[4])) for r in rows]
+
+
+def prune_cover(cover: list[dict], sizes: dict[str, int | None], cities) -> tuple[list[dict], list[tuple]]:
+    """Quita las regiones que ningun destino del mundo elegiria. Ver PRUNE arriba."""
+    rasters, areas = {}, {}
+    for p in cover:
+        box = _bbox(p["_geom"])
+        areas[p["id"]] = (box[2] - box[0]) * (box[3] - box[1])
+        rasters[p["id"]] = cells_of(p["_geom"])
+
+    # Para cada celda, la region de bbox mas pequeno que la cubre: la que elegiria la app.
+    best: dict[tuple[int, int], str] = {}
+    for region, cells in rasters.items():
+        for cx, cy in cells:
+            key = (int(cx), int(cy))
+            if key not in best or areas[region] < areas[best[key]]:
+                best[key] = region
+
+    demand: collections.Counter = collections.Counter()
+    for lon, lat in cities:
+        region = best.get((int((lon + 180) / CELL_DEG), int((lat + 90) / CELL_DEG)))
+        if region:
+            demand[region] += 1
+
+    kept, dropped = [], []
+    for p in cover:
+        region = p["id"]
+        mb = (sizes.get(region) or 0) * SQLITE_RATIO / 2**20
+        # Una region mas pequena que una celda (Monaco, Ceuta, Bristol, Washington DC)
+        # no atrapa ningun centro de la rejilla y saldria con demanda 0 por un ARTEFACTO
+        # del muestreo, no por sobrar. Se conservan siempre.
+        if len(rasters[region]) == 0:
+            kept.append(p)
+        elif demand[region] == 0:
+            dropped.append((region, sizes.get(region) or 0, "no la elige ninguna localidad"))
+        elif demand[region] < MIN_DEMAND_FOR_HUGE and mb > HUGE_SQLITE_MB:
+            dropped.append((region, sizes.get(region) or 0,
+                            f"{mb:.0f} MB de SQLite para {demand[region]} localidades"))
+        else:
+            kept.append(p)
+    return kept, dropped
 
 
 # Ciudades de los casos LIMITE, no de los faciles: cada una cazo un fallo real del corte
@@ -248,14 +365,18 @@ def continent_of(prop: dict, by_id: dict[str, dict]) -> str:
         if not parent:
             break
         node = parent
-    return node["id"] if node is not prop else (prop.get("parent") or "other")
+    # Una region que YA es raiz (los continentes que Geofabrik publica enteros, y Rusia)
+    # es su propio continente. Devolver "other" la mandaba a un shard llamado asi, que
+    # no dice nada y ademas rompe `--scope australia-oceania`.
+    return node["id"]
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=Path("regions.world.json"))
-    parser.add_argument("--sizes", action="store_true", help="consulta el tamano real de cada pbf (HEAD)")
+    parser.add_argument("--out", type=Path, default=Path("regions.json"))
+    parser.add_argument("--no-prune", action="store_true", help="deja el recubrimiento en bruto, con sus solapes")
     parser.add_argument("--verify", action="store_true", help="comprueba ciudades reales de los casos limite")
+    parser.add_argument("--cache", type=Path, default=Path(".cache"), help="donde guardar el fichero de GeoNames")
     args = parser.parse_args()
 
     props = fetch_index()
@@ -263,15 +384,27 @@ def main() -> int:
     cover = world_cover(props)
     print(f"regiones del recubrimiento: {len(cover)}")
 
-    sizes: dict[str, int | None] = {}
-    if args.sizes:
-        print("consultando tamanos (HEAD, sin descargar)...")
-        with ThreadPoolExecutor(max_workers=12) as pool:
-            urls = [(p["id"], p["urls"]["pbf"]) for p in cover]
-            for (region, _), size in zip(urls, pool.map(lambda x: pbf_size(x[1]), urls)):
-                sizes[region] = size
-        total = sum(s for s in sizes.values() if s)
-        print(f"pbf total {total / 2**30:,.1f} GB  ->  SQLite estimado {total * SQLITE_RATIO / 2**30:,.2f} GB")
+    # Los tamanos no son informativos: la poda los necesita para descartar regiones
+    # imposibles de bajar en un movil, y el workflow para repartir la matriz por peso.
+    print("consultando tamanos (HEAD, sin descargar)...")
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        urls = [(p["id"], p["urls"]["pbf"]) for p in cover]
+        sizes = {region: size for (region, _), size
+                 in zip(urls, pool.map(lambda x: pbf_size(x[1]), urls))}
+    bruto = sum(s for s in sizes.values() if s)
+    print(f"en bruto: {bruto / 2**30:,.1f} GB de pbf -> SQLite estimado {bruto * SQLITE_RATIO / 2**30:,.2f} GB")
+
+    if not args.no_prune:
+        args.cache.mkdir(exist_ok=True)
+        cities = fetch_cities(args.cache / "cities500.zip")
+        print(f"podando contra {len(cities):,} localidades reales...")
+        cover, dropped = prune_cover(cover, sizes, cities)
+        for region, size, why in sorted(dropped, key=lambda d: -d[1]):
+            print(f"   fuera  {region:28s} {size / 2**20:8.0f} MB   {why}")
+        podado = sum(sizes.get(p["id"]) or 0 for p in cover)
+        print(f"podado : {len(cover)} regiones, {podado / 2**30:,.1f} GB de pbf "
+              f"-> SQLite estimado {podado * SQLITE_RATIO / 2**30:,.2f} GB "
+              f"({(1 - podado / bruto) * 100:.0f}% menos)")
 
     regions = []
     for p in sorted(cover, key=lambda x: x["id"]):
@@ -282,15 +415,16 @@ def main() -> int:
             "continent": continent_of(p, by_id),
             "source": p["urls"]["pbf"],
         }
-        if args.sizes and sizes.get(p["id"]):
+        if sizes.get(p["id"]):
             entry["pbf_bytes"] = sizes[p["id"]]
         regions.append(entry)
 
     payload = {
         "$comment": (
-            "GENERADO por scripts/build_regions.py desde el indice de Geofabrik. No editar a "
-            "mano: se regenera. El bbox no se declara aqui, se deriva de los POIs reales al "
-            "construir cada extracto (ver meta.bbox) y acaba en catalog.json."
+            "GENERADO por scripts/build_regions.py desde el indice de Geofabrik, y podado "
+            "contra las localidades reales del mundo. No editar a mano: se regenera. La "
+            "geometria no se declara aqui, se deriva de los POIs reales al construir cada "
+            "extracto (ver meta.cells) y acaba en catalog.json como rectangulos."
         ),
         "schema": 1,
         "regions": regions,

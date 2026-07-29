@@ -6,3 +6,6 @@ dist/
 
 __pycache__/
 *.py[cod]
+
+# Cache local de build_regions.py (GeoNames), no es del repo.
+.cache/

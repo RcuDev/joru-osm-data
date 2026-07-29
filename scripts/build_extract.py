@@ -25,7 +25,18 @@ import osmium
 
 # Version del generador. Subir cuando cambie el ESQUEMA de salida (no el filtro,
 # que ya tiene su propia huella).
-GENERATOR_VERSION = "1"
+#   1 -> esquema inicial
+#   2 -> meta.cells: donde hay POIs de verdad, en una rejilla de 0,25 grados
+GENERATOR_VERSION = "2"
+
+# Lado de la celda con la que se marca DONDE tiene datos esta region, en grados
+# (~28 km en el ecuador). Un solo bbox no vale como descriptor: el de Portugal se
+# estira hasta las Azores y acaba siendo mayor que el de Espana, asi que un destino
+# de Lisboa resolvia al extracto espanol. Medido sobre las 235.063 localidades del
+# mundo, el bbox unico manda al 22% de los destinos a una region que no los contiene.
+# Con las celdas reales de POIs ese error es cero. La MISMA rejilla que usa
+# build_regions.py para podar el corte.
+CELL_DEG = 0.25
 
 # ---------------------------------------------------------------------------
 # Filtro de inclusion: criterio TURISTICO derivado de los datos de OSM, NO copia del
@@ -183,6 +194,7 @@ def build(pbf: Path, out: Path, region: str) -> dict:
     header_ts = processor.header.get("osmosis_replication_timestamp", "")
 
     rows, skipped, started = [], 0, time.time()
+    cells: set[tuple[int, int]] = set()
     for obj in processor:
         kind = obj.type_str()
         # Las areas derivadas de un way duplicarian el way, que ya se procesa aparte
@@ -221,6 +233,7 @@ def build(pbf: Path, out: Path, region: str) -> dict:
             skipped += 1
             continue
 
+        cells.add((int((lon + 180) / CELL_DEG), int((lat + 90) / CELL_DEG)))
         rows.append((
             f"{osm_type}/{osm_id}",
             lon, lat, size_m,
@@ -245,6 +258,11 @@ def build(pbf: Path, out: Path, region: str) -> dict:
         "filter_fingerprint": filter_fingerprint(),
         "poi_count": str(count),
         "bbox": json.dumps([min_lon, min_lat, max_lon, max_lat]),
+        "cell_deg": str(CELL_DEG),
+        # Celdas donde esta region tiene POIs de verdad. build_catalog.py las fusiona
+        # en rectangulos para el catalogo; aqui se guardan crudas para poder rehacer
+        # esa fusion sin regenerar el extracto.
+        "cells": json.dumps(sorted(cells), separators=(",", ":")),
     }
     db.executemany("INSERT INTO meta VALUES (?,?)", meta.items())
     db.commit()
