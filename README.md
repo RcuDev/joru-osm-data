@@ -38,6 +38,11 @@ Geofabrik (.osm.pbf)
 El workflow `.github/workflows/build-extracts.yml` corre **el dia 1 de cada mes** y
 tambien a mano (`workflow_dispatch`).
 
+> **Aviso:** GitHub **desactiva los workflows programados tras 60 dias sin actividad en el
+> repositorio**, y las ejecuciones del propio workflow NO cuentan como actividad. Como aqui
+> se toca poco el codigo, hay que estar atento al correo de aviso de GitHub y reactivarlo
+> desde la pestana Actions (o hacer cualquier commit para reiniciar el contador).
+
 ### URL estable
 
 La app pide siempre la release mas reciente, asi que regenerar los datos o anadir

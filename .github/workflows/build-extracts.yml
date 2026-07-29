@@ -38,22 +38,36 @@ jobs:
         id: plan
         run: |
           set -euo pipefail
-          selected='${{ inputs.regions }}'
+          # SELECTED llega por env, no interpolado en el script: el valor lo escribe
+          # quien lanza el workflow y un '${{ }}' dentro del shell seria inyeccion.
+          # ${VAR:-} y no $VAR: en el disparo por 'schedule' el contexto inputs no
+          # existe, y con `set -u` una variable sin definir tumbaria la ejecucion
+          # automatica del dia 1 a las 4:00 sin que nadie lo viera.
+          selected="${SELECTED:-}"
           if [ -z "$selected" ]; then
             ids=$(jq -r '.regions[].id' regions.json | tr '\n' ' ')
             echo "full=true" >> "$GITHUB_OUTPUT"
           else
+            for id in $selected; do
+              case "$id" in
+                *[!a-z0-9_-]*) echo "::error::id de region invalido: $id"; exit 1 ;;
+              esac
+            done
             ids="$selected"
             echo "full=false" >> "$GITHUB_OUTPUT"
           fi
           echo "ids=$ids" >> "$GITHUB_OUTPUT"
           echo "Regiones: $ids"
+        env:
+          SELECTED: ${{ inputs.regions }}
 
       - name: Construir extractos
+        env:
+          IDS: ${{ steps.plan.outputs.ids }}
         run: |
           set -euo pipefail
           mkdir -p dist
-          for id in ${{ steps.plan.outputs.ids }}; do
+          for id in ${IDS:-}; do
             url=$(jq -r --arg id "$id" '.regions[] | select(.id==$id) | .source // empty' regions.json)
             if [ -z "$url" ]; then
               echo "::error::region desconocida en regions.json: $id"
