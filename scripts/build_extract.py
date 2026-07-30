@@ -21,7 +21,14 @@ import sys
 import time
 from pathlib import Path
 
-import osmium
+# osmium solo hace falta para CONSTRUIR. La huella del filtro es un hash de constantes
+# de este mismo fichero, asi que importarlo para consultarla -desde CI, o en una maquina
+# sin pyosmium- tiene que funcionar igual. Sin esta guarda, el job que preparaba el
+# Release moria con ModuleNotFoundError sin haber tocado un solo .pbf.
+try:
+    import osmium
+except ModuleNotFoundError:
+    osmium = None
 
 # Version del generador. Subir cuando cambie el ESQUEMA de salida (no el filtro,
 # que ya tiene su propia huella).
@@ -173,6 +180,8 @@ CREATE TABLE meta (k TEXT PRIMARY KEY, v TEXT NOT NULL);
 
 
 def build(pbf: Path, out: Path, region: str) -> dict:
+    if osmium is None:
+        raise SystemExit("error: hace falta pyosmium para construir un extracto (pip install osmium)")
     if out.exists():
         out.unlink()
     db = sqlite3.connect(out)

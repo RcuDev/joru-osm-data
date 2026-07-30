@@ -41,7 +41,6 @@ jobs:
       regions: ${{ steps.plan.outputs.regions }}
       shards: ${{ steps.plan.outputs.shards }}
       tag: ${{ steps.release.outputs.tag }}
-      fingerprint: ${{ steps.release.outputs.fingerprint }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -82,12 +81,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPAIR: ${{ inputs.repair }}
-          SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
-          fingerprint=$(python -c "import sys; sys.path.insert(0,'scripts'); import build_extract; print(build_extract.filter_fingerprint())")
-          echo "fingerprint=$fingerprint" >> "$GITHUB_OUTPUT"
-
+          # La huella del filtro NO se calcula aqui: sale de catalog.json en el job
+          # final. Asi se publica la de los extractos que REALMENTE se construyeron y
+          # no la que dice el codigo, que ademas obligaba a instalar pyosmium en este
+          # job solo para calcular un hash.
           if [ "${REPAIR:-false}" = "true" ]; then
             # Reparar NO crea un Release nuevo: rellena el vigente, que es el que la
             # app esta consumiendo ahora mismo por /releases/latest/download/.
@@ -110,6 +109,7 @@ jobs:
   build:
     needs: plan
     if: needs.plan.outputs.empty != 'true'
+    name: ${{ matrix.shard.name }}
     runs-on: ubuntu-latest
     timeout-minutes: 300
     strategy:
@@ -218,6 +218,10 @@ jobs:
           if [ -f base/catalog.json ]; then base="--base base/catalog.json"; fi
           python scripts/build_catalog.py --regions regions.json --dist dist \
             --meta meta --out dist/catalog.json $base
+          # La huella que se publica es la de los extractos construidos, leida del
+          # catalogo ya generado. Queda disponible para los pasos siguientes.
+          echo "FINGERPRINT=$(jq -r .filter_fingerprint dist/catalog.json)" >> "$GITHUB_ENV"
+          echo "CATALOG_REGIONS=$(jq -r '.regions | length' dist/catalog.json)" >> "$GITHUB_ENV"
 
       - name: Publicar
         env:
@@ -225,7 +229,6 @@ jobs:
           TAG: ${{ needs.plan.outputs.tag }}
           REPO: ${{ github.repository }}
           SHA: ${{ github.sha }}
-          FINGERPRINT: ${{ needs.plan.outputs.fingerprint }}
         run: |
           set -euo pipefail
           gh release upload "$TAG" dist/catalog.json --clobber
@@ -253,7 +256,6 @@ jobs:
           REF: ${{ github.ref_name }}
           ATTEMPT: ${{ github.run_attempt }}
           TAG: ${{ needs.plan.outputs.tag }}
-          FINGERPRINT: ${{ needs.plan.outputs.fingerprint }}
           REGIONS: ${{ needs.plan.outputs.regions }}
           SHARDS: ${{ needs.plan.outputs.shards }}
           BUILD_RESULT: ${{ needs.build.result }}
@@ -266,6 +268,7 @@ jobs:
             echo "|---|---|"
             echo "| release | \`$TAG\` |"
             echo "| regiones construidas | $REGIONS en $SHARDS shards |"
+            echo "| regiones en el catalogo | $CATALOG_REGIONS |"
             echo "| shards | $BUILD_RESULT |"
             echo "| commit | \`${SHA:0:7}\` (\`$REF\`) |"
             echo "| intento | #$ATTEMPT |"

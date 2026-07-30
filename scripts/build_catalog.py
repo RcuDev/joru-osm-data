@@ -168,47 +168,67 @@ def main() -> int:
 
     heredadas = {}
     if args.base and args.base.exists():
-        heredadas = {e["id"]: e for e in json.loads(args.base.read_text(encoding="utf-8"))["regions"]}
-        print(f"catalogo base: {len(heredadas)} regiones")
+        base = json.loads(args.base.read_text(encoding="utf-8"))
+        heredadas = {e["id"]: e for e in base["regions"]}
+        print(f"catalogo base (esquema {base.get('schema')}): {len(heredadas)} regiones")
 
-    entries, faltan = [], []
+    # Lo construido AHORA y lo heredado se validan con criterios distintos a proposito:
+    # un fallo en lo que acaba de salir del pipeline es un bug y corta la publicacion;
+    # una region heredada que ya no encaja simplemente se cae del catalogo y se
+    # reconstruye con el modo `repair`. Mezclar ambos criterios significaria no publicar
+    # NADA por culpa de datos viejos, con los extractos nuevos ya subidos al Release.
+    nuevas, viejas, faltan = [], [], []
     for region in declared:
         asset = args.dist / f"{region['id']}.sqlite"
         meta_file = (args.meta / f"{region['id']}.json") if args.meta else None
         if asset.exists():
-            entries.append(entry_from_sqlite(region, asset))
+            nuevas.append(entry_from_sqlite(region, asset))
         elif meta_file and meta_file.exists():
-            entries.append(json.loads(meta_file.read_text(encoding="utf-8")))
+            nuevas.append(json.loads(meta_file.read_text(encoding="utf-8")))
         elif region["id"] in heredadas:
-            entries.append(heredadas[region["id"]])
+            viejas.append(heredadas[region["id"]])
         else:
             faltan.append(region["id"])
 
-    if faltan:
-        print(f"  aviso: {len(faltan)} regiones declaradas sin extracto: {', '.join(faltan[:10])}"
-              f"{'...' if len(faltan) > 10 else ''}")
-    if not entries:
+    if not nuevas and not viejas:
         raise SystemExit("error: no se genero ningun extracto")
 
     # Un catalogo con extractos de filtros distintos serviria datos incoherentes entre
     # regiones del mismo viaje: se corta aqui, no en el movil.
-    fingerprints = {e["filter_fingerprint"] for e in entries}
+    fingerprints = {e["filter_fingerprint"] for e in nuevas}
     if len(fingerprints) > 1:
-        conteo = collections.Counter(e["filter_fingerprint"] for e in entries)
+        conteo = collections.Counter(e["filter_fingerprint"] for e in nuevas)
         raise SystemExit(f"error: extractos con filtros distintos: {conteo.most_common()}")
 
-    sin_geometria = [e["id"] for e in entries if not e.get("rects")]
+    sin_geometria = [e["id"] for e in nuevas if not e.get("rects")]
     if sin_geometria:
         raise SystemExit(
-            f"error: {len(sin_geometria)} regiones sin rectangulos (extracto de un generador "
-            f"anterior a la version 2): {', '.join(sin_geometria[:10])}"
+            f"error: {len(sin_geometria)} regiones construidas sin rectangulos: "
+            f"{', '.join(sin_geometria[:10])}"
         )
+
+    # Se descarta lo heredado que la app no podria usar junto a lo nuevo: sin geometria
+    # (generador anterior a la version 2) o con otro filtro. Quedan como si no existieran
+    # -el wizard avisa de que la zona no esta cubierta- hasta que se reconstruyan.
+    esperado = fingerprints.pop() if fingerprints else None
+    descartadas = [e["id"] for e in viejas
+                   if not e.get("rects") or (esperado and e["filter_fingerprint"] != esperado)]
+    entries = nuevas + [e for e in viejas if e["id"] not in descartadas]
+    if descartadas:
+        print(f"  aviso: {len(descartadas)} regiones heredadas se descartan por estar "
+              f"desfasadas (relanza con `repair`): {', '.join(descartadas[:10])}"
+              f"{'...' if len(descartadas) > 10 else ''}")
+    if faltan:
+        print(f"  aviso: {len(faltan)} regiones declaradas sin extracto: {', '.join(faltan[:10])}"
+              f"{'...' if len(faltan) > 10 else ''}")
 
     catalog = {
         "schema": CATALOG_SCHEMA,
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "generator_version": sorted({e["generator_version"] for e in entries})[-1],
-        "filter_fingerprint": fingerprints.pop(),
+        # `esperado` es None solo si este build no construyo nada y el catalogo es
+        # integramente heredado; entonces la huella es la que ya tenia.
+        "filter_fingerprint": esperado or entries[0]["filter_fingerprint"],
         "regions": sorted(entries, key=lambda e: e["id"]),
     }
 
