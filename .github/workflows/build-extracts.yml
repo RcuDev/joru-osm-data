@@ -190,7 +190,7 @@ jobs:
 
       - name: Guardar los metadatos
         if: hashFiles('dist/*.sqlite') != ''
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: meta-${{ matrix.shard.name }}
           path: meta/
@@ -225,7 +225,10 @@ jobs:
           python-version: '3.12'
 
       - name: Recoger los metadatos de todos los shards
-        uses: actions/download-artifact@v4
+        # v8 descarga solo artefactos subidos por upload-artifact v4 o superior, asi que
+        # las dos suben juntas. Ambas corren ya en Node 24 (las v4 avisaban de que
+        # apuntan a Node 20 y el runner las forzaba).
+        uses: actions/download-artifact@v8
         with:
           pattern: meta-*
           merge-multiple: true
