@@ -43,10 +43,14 @@ from pathlib import Path
 
 CATALOG_SCHEMA = 2
 
-# Tope de rectangulos por region. Generoso a proposito: la medicion sobre el mundo
-# entero da una media de 20 y el peor caso ronda los 100. Existe solo para que una
-# region con datos dispersos y patologicos no infle el catalogo sin limite.
-MAX_RECTS = 512
+# Tope de rectangulos por region. Existe solo para que una region con datos dispersos y
+# patologicos no infle el catalogo sin limite, NO para apretar el tamano: fusionar de mas
+# hace que una region reclame territorio donde no tiene datos y se descargue de balde.
+#
+# 512 se quedaba corto: lo tocaban 14 regiones -Siberia, Groenlandia, Alaska, Kazajistan,
+# Argentina...- y a `far-eastern-fed-district` le dejaba un rectangulo de 46 grados. Sin
+# tope necesita 1.908 y el mayor baja a 8. Con 4096 no lo toca ninguna region conocida.
+MAX_RECTS = 4096
 
 # A partir de que proporcion de celdas ya cubiertas por regiones MAS PEQUENAS se
 # considera que una region es solo una copia gruesa de sus hijas.
@@ -114,12 +118,26 @@ def merge_rects(cells: list[list[int]], cell_deg: float, max_rects: int = MAX_RE
         else:
             merged.append([y, x1, x2, y])
 
-    # Valvula de seguridad: si salieran demasiados, se van fundiendo los mas pequenos
-    # en su caja comun. Pierde precision, nunca cobertura.
+    # Valvula de seguridad: si salieran demasiados, se funden de dos en dos. La pareja
+    # se elige por lo POCO que desperdicia su caja comun, y solo entre rectangulos
+    # contiguos en el recorrido por filas.
+    #
+    # Antes se fundian "los dos mas pequenos", estuvieran donde estuvieran, y eso es un
+    # desastre en cuanto una region cruza el antimeridiano: unir un rectangulo de +179
+    # con otro de -179 da uno de 359,75 grados, o sea el planeta entero. Con la version
+    # publicada el 2026-07-30 le pasaba a 14 regiones, y `far-eastern-fed-district`
+    # acababa reclamando Cardiff.
+    def area(r):
+        return (r[2] - r[1] + 1) * (r[3] - r[0] + 1)
+
+    def union(a, b):
+        return [min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3])]
+
     while len(merged) > max_rects:
-        merged.sort(key=lambda r: (r[2] - r[1] + 1) * (r[3] - r[0] + 1))
-        a, b = merged[0], merged[1]
-        merged = merged[2:] + [[min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3])]]
+        merged.sort(key=lambda r: (r[0], r[1]))
+        i = min(range(len(merged) - 1),
+                key=lambda k: area(union(merged[k], merged[k + 1])) - area(merged[k]) - area(merged[k + 1]))
+        merged[i:i + 2] = [union(merged[i], merged[i + 1])]
 
     return sorted(
         [round(x1 * cell_deg - 180, 4), round(y1 * cell_deg - 90, 4),

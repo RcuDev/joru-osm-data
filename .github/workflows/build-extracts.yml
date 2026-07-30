@@ -17,6 +17,10 @@ on:
         description: 'Reparar: construir solo las regiones que falten en el Release vigente'
         type: boolean
         default: false
+      catalog_only:
+        description: 'Solo catalogo: rehacerlo desde los extractos ya publicados, sin construir nada'
+        type: boolean
+        default: false
       publish:
         description: 'Publicar el Release (desmarcar para una prueba que no toque el catalogo vivo)'
         type: boolean
@@ -66,8 +70,22 @@ jobs:
         env:
           SCOPE: ${{ inputs.scope }}
           REPAIR: ${{ inputs.repair }}
+          CATALOG_ONLY: ${{ inputs.catalog_only }}
         run: |
           set -euo pipefail
+          if [ "${CATALOG_ONLY:-false}" = "true" ]; then
+            # El catalogo se rehace desde los extractos ya publicados: ni un .pbf se
+            # descarga. Sirve para arreglar la geometria o los filtros del catalogo sin
+            # volver a construir el mundo entero, que son horas y decenas de GB.
+            echo "Solo catalogo: no se construye ninguna region"
+            {
+              echo "matrix=[]"
+              echo "empty=true"
+              echo "regions=0"
+              echo "shards=0"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           # SCOPE lo escribe quien lanza el workflow: llega por env y lo valida el
           # script, nunca interpolado en el shell (seria inyeccion de comandos).
           args=""
@@ -77,21 +95,25 @@ jobs:
 
       - name: Preparar el Release
         id: release
-        if: steps.plan.outputs.empty != 'true'
+        if: steps.plan.outputs.empty != 'true' || inputs.catalog_only
         env:
           GH_TOKEN: ${{ github.token }}
           REPAIR: ${{ inputs.repair }}
+          CATALOG_ONLY: ${{ inputs.catalog_only }}
         run: |
           set -euo pipefail
           # La huella del filtro NO se calcula aqui: sale de catalog.json en el job
           # final. Asi se publica la de los extractos que REALMENTE se construyeron y
           # no la que dice el codigo, que ademas obligaba a instalar pyosmium en este
           # job solo para calcular un hash.
-          if [ "${REPAIR:-false}" = "true" ]; then
-            # Reparar NO crea un Release nuevo: rellena el vigente, que es el que la
+          #
+          # Reparar y rehacer el catalogo trabajan sobre el Release VIGENTE; una
+          # construccion normal estrena uno.
+          if [ "${REPAIR:-false}" = "true" ] || [ "${CATALOG_ONLY:-false}" = "true" ]; then
+            # NO se crea un Release nuevo: se trabaja sobre el vigente, que es el que la
             # app esta consumiendo ahora mismo por /releases/latest/download/.
             tag=$(gh release view --json tagName --jq .tagName)
-            echo "Reparando el Release vigente: $tag"
+            echo "Sobre el Release vigente: $tag"
           else
             tag="data-$(date -u +%Y-%m-%d)"
             estado=$(gh release view "$tag" --json isDraft --jq .isDraft 2>/dev/null || echo ausente)
@@ -236,7 +258,7 @@ jobs:
     # `always()` para que un shard caido no impida publicar lo que si salio: el
     # catalogo hereda del Release anterior las regiones que falten y el job de
     # reparacion las reconstruye despues.
-    if: always() && needs.plan.outputs.empty != 'true' && inputs.publish != false
+    if: always() && inputs.publish != false && (needs.plan.outputs.empty != 'true' || inputs.catalog_only)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -248,11 +270,26 @@ jobs:
         # v8 descarga solo artefactos subidos por upload-artifact v4 o superior, asi que
         # las dos suben juntas. Ambas corren ya en Node 24 (las v4 avisaban de que
         # apuntan a Node 20 y el runner las forzaba).
+        if: needs.plan.outputs.empty != 'true'
         uses: actions/download-artifact@v8
         with:
           pattern: meta-*
           merge-multiple: true
           path: meta
+
+      - name: Descargar los extractos ya publicados (solo catalogo)
+        # La geometria del catalogo sale de `meta.cells` de cada .sqlite, asi que para
+        # rehacerla hay que tener los ficheros delante. Son ~1,9 GB del CDN, minutos,
+        # frente a las horas y los 83 GB de reconstruir el mundo desde Geofabrik.
+        if: inputs.catalog_only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh release download "$TAG" --pattern '*.sqlite' --dir dist
+          echo "$(ls dist | wc -l) extractos, $(du -sh dist | cut -f1)"
 
       - name: Catalogo anterior (para heredar lo no reconstruido)
         env:
