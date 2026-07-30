@@ -360,6 +360,7 @@ jobs:
           REGIONS: ${{ needs.plan.outputs.regions }}
           SHARDS: ${{ needs.plan.outputs.shards }}
           BUILD_RESULT: ${{ needs.build.result }}
+          CATALOG_ONLY: ${{ inputs.catalog_only }}
         run: |
           set -euo pipefail
           {
@@ -368,14 +369,21 @@ jobs:
             echo "| | |"
             echo "|---|---|"
             echo "| release | \`$TAG\` |"
-            echo "| regiones construidas | $REGIONS en $SHARDS shards |"
+            if [ "${CATALOG_ONLY:-false}" = "true" ]; then
+              echo "| modo | solo catalogo (no se construyo ninguna region) |"
+            else
+              echo "| regiones construidas | $REGIONS en $SHARDS shards |"
+            fi
             echo "| regiones en el catalogo | $CATALOG_REGIONS |"
             echo "| shards | $BUILD_RESULT |"
             echo "| commit | \`${SHA:0:7}\` (\`$REF\`) |"
             echo "| intento | #$ATTEMPT |"
             echo "| huella del filtro | \`$FINGERPRINT\` |"
             echo
-            if [ "$BUILD_RESULT" != "success" ]; then
+            # Solo si algun shard FALLO. En un `catalog_only` el job de construccion
+            # sale `skipped` a proposito, y avisar ahi de que faltan regiones manda a
+            # reparar algo que esta perfecto.
+            if [ "$BUILD_RESULT" = "failure" ]; then
               echo "> **Faltan regiones.** El catalogo hereda del Release anterior las que"
               echo "> siguen sirviendo y descarta las desfasadas. Para rellenarlas: **Run"
               echo "> workflow** con **repair** marcado y el MISMO \`scope\`, una vez este"
