@@ -94,7 +94,21 @@ jobs:
             echo "Reparando el Release vigente: $tag"
           else
             tag="data-$(date -u +%Y-%m-%d)"
-            if ! gh release view "$tag" >/dev/null 2>&1; then
+            estado=$(gh release view "$tag" --json isDraft --jq .isDraft 2>/dev/null || echo ausente)
+            if [ "$estado" = "true" ]; then
+              echo "Se reaprovecha el borrador $tag (repeticion de un build que no llego a publicarse)"
+            else
+              if [ "$estado" != "ausente" ]; then
+                # Ya publicado, y es el que la app esta sirviendo AHORA por
+                # /releases/latest/download/. Una construccion completa dura horas: caer
+                # encima dejaria ese Release mezclando lo viejo y lo nuevo todo ese rato.
+                # Pasa en cuanto se lanzan dos builds completos el mismo dia, que es
+                # justo lo que ocurre al validar con un continente y seguir con el mundo.
+                n=2
+                while gh release view "$tag.$n" >/dev/null 2>&1; do n=$((n + 1)); done
+                echo "$tag ya esta publicado: se construye en $tag.$n"
+                tag="$tag.$n"
+              fi
               # Se crea como BORRADOR: mientras los shards suben sus .sqlite, el
               # Release esta a medias, y /releases/latest/download/ debe seguir
               # sirviendo el anterior, completo. Lo publica el job final.
