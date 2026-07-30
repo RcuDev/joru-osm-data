@@ -48,6 +48,22 @@ CATALOG_SCHEMA = 2
 # region con datos dispersos y patologicos no infle el catalogo sin limite.
 MAX_RECTS = 512
 
+# A partir de que proporcion de celdas ya cubiertas por regiones MAS PEQUENAS se
+# considera que una region es solo una copia gruesa de sus hijas.
+#
+# La app baja la region del destino MAS las vecinas cuyo territorio llegue a su area de
+# busqueda, para poder proponer excursiones. Eso obliga a echar del catalogo a las
+# regiones que no son vecinas de nadie sino el mismo territorio otra vez: `spain` es
+# 66,6 MB que sus 19 comunidades ya cubren, asi que sin esto un destino en Madrid se
+# bajaria `madrid` (4,2 MB) Y `spain` entero.
+#
+# El umbral no es inventado: medido sobre el Release europeo real, `spain` esta al 100%
+# y `england` al 98,6%, la siguiente candidata (`gelderland`) al 96%, y las que no deben
+# caer -Andorra, Monaco, Ceuta, Isla de Man, Luxemburgo- estan todas al 0%. Ademas
+# ninguna de las 99.743 localidades del mundo elige `spain` ni `england`, y quitarlas no
+# deja sin cobertura a ninguna.
+REDUNDANT_CELL_RATIO = 0.97
+
 
 def sha256_of(path: Path) -> str:
     digest = hashlib.sha256()
@@ -110,6 +126,38 @@ def merge_rects(cells: list[list[int]], cell_deg: float, max_rects: int = MAX_RE
          round((x2 + 1) * cell_deg - 180, 4), round((y2 + 1) * cell_deg - 90, 4)]
         for y1, x1, x2, y2 in merged
     )
+
+
+def cells_of(entry: dict, cell_deg: float = 0.25) -> set[tuple[int, int]]:
+    """Celdas que ocupan los rectangulos de una region."""
+    return {
+        (i, j)
+        for x1, y1, x2, y2 in entry["rects"]
+        for i in range(round(x1 / cell_deg), round(x2 / cell_deg))
+        for j in range(round(y1 / cell_deg), round(y2 / cell_deg))
+    }
+
+
+def redundant(entries: list[dict]) -> list[str]:
+    """Regiones que son una copia gruesa de otras mas pequenas. Ver REDUNDANT_CELL_RATIO."""
+    celdas = {e["id"]: cells_of(e) for e in entries}
+    reclamantes: dict[tuple[int, int], list[str]] = collections.defaultdict(list)
+    for region, cs in celdas.items():
+        for cell in cs:
+            reclamantes[cell].append(region)
+
+    fuera = []
+    for entry in entries:
+        propias = celdas[entry["id"]]
+        if not propias:
+            continue
+        cubiertas = sum(
+            1 for cell in propias
+            if any(len(celdas[otra]) < len(propias) for otra in reclamantes[cell] if otra != entry["id"])
+        )
+        if cubiertas / len(propias) >= REDUNDANT_CELL_RATIO:
+            fuera.append(entry["id"])
+    return fuera
 
 
 def entry_from_sqlite(region: dict, asset: Path) -> dict:
@@ -221,6 +269,13 @@ def main() -> int:
     if faltan:
         print(f"  aviso: {len(faltan)} regiones declaradas sin extracto: {', '.join(faltan[:10])}"
               f"{'...' if len(faltan) > 10 else ''}")
+
+    copias = redundant(entries)
+    if copias:
+        peso = sum(e["bytes"] for e in entries if e["id"] in copias) / 1048576
+        print(f"  fuera del catalogo: {len(copias)} regiones que sus hijas ya cubren "
+              f"({peso:.0f} MB): {', '.join(sorted(copias))}")
+        entries = [e for e in entries if e["id"] not in copias]
 
     catalog = {
         "schema": CATALOG_SCHEMA,
