@@ -268,13 +268,20 @@ jobs:
             || echo "sin catalogo previo"
 
       - name: Generar catalog.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
         run: |
           set -euo pipefail
           mkdir -p dist
+          # Que hay REALMENTE en este Release. Los assets no viajan de un Release a
+          # otro, asi que una region heredada cuyo .sqlite se quedo en el anterior no
+          # puede figurar en el catalogo: la app pediria un fichero que da 404.
+          gh release view "$TAG" --json assets --jq '.assets[].name' > assets.txt
           base=""
           if [ -f base/catalog.json ]; then base="--base base/catalog.json"; fi
           python scripts/build_catalog.py --regions regions.json --dist dist \
-            --meta meta --out dist/catalog.json $base
+            --meta meta --assets assets.txt --out dist/catalog.json $base
           # La huella que se publica es la de los extractos construidos, leida del
           # catalogo ya generado. Queda disponible para los pasos siguientes.
           echo "FINGERPRINT=$(jq -r .filter_fingerprint dist/catalog.json)" >> "$GITHUB_ENV"

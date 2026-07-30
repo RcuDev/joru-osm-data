@@ -187,6 +187,10 @@ def main() -> int:
     ap.add_argument("--dist", type=Path, default=Path("dist"))
     ap.add_argument("--meta", type=Path, help="directorio con los <id>.json de cada shard")
     ap.add_argument("--base", type=Path, help="catalogo previo del que heredar regiones no reconstruidas")
+    ap.add_argument("--assets", type=Path,
+                    help="fichero con los assets que hay en el Release de destino, uno por linea. "
+                         "Sin esto, una region heredada puede acabar apuntando a un asset que vive "
+                         "en el Release ANTERIOR: el catalogo la declara y la app se come un 404.")
     ap.add_argument("--emit-meta", type=Path,
                     help="en vez del catalogo, escribe ahi un <id>.json por extracto de --dist. "
                          "Lo usa cada shard del workflow: sube su .sqlite al Release y deja solo "
@@ -270,12 +274,31 @@ def main() -> int:
         print(f"  aviso: {len(faltan)} regiones declaradas sin extracto: {', '.join(faltan[:10])}"
               f"{'...' if len(faltan) > 10 else ''}")
 
+    # Un asset solo existe en el Release donde se subio. Al heredar entradas de un
+    # Release anterior, sus .sqlite NO viajan: si el catalogo las declara, la app pide
+    # /releases/latest/download/<region>.sqlite y recibe un 404. Paso de verdad con
+    # `austria` y `nord-ovest` el 2026-07-30. Mejor que la region no exista -el wizard
+    # avisa de que la zona no esta cubierta y el modo `repair` la reconstruye- a que
+    # exista y falle al descargar.
+    if args.assets and args.assets.exists():
+        presentes = {line.strip() for line in args.assets.read_text(encoding="utf-8").splitlines()}
+        huerfanas = [e["id"] for e in entries if e["file"] not in presentes]
+        if huerfanas:
+            print(f"  fuera del catalogo: {len(huerfanas)} regiones cuyo asset no esta en este "
+                  f"Release (relanza con `repair`): {', '.join(sorted(huerfanas)[:10])}"
+                  f"{'...' if len(huerfanas) > 10 else ''}")
+            entries = [e for e in entries if e["file"] in presentes]
+
     copias = redundant(entries)
     if copias:
         peso = sum(e["bytes"] for e in entries if e["id"] in copias) / 1048576
         print(f"  fuera del catalogo: {len(copias)} regiones que sus hijas ya cubren "
               f"({peso:.0f} MB): {', '.join(sorted(copias))}")
         entries = [e for e in entries if e["id"] not in copias]
+
+    if not entries:
+        raise SystemExit("error: no queda ninguna region tras los filtros; no se publica un "
+                         "catalogo vacio, que dejaria a la app sin cobertura en todo el mundo")
 
     catalog = {
         "schema": CATALOG_SCHEMA,
