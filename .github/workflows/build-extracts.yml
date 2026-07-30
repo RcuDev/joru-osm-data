@@ -132,34 +132,55 @@ jobs:
           IDS: ${{ matrix.shard.regions }}
           SHARD: ${{ matrix.shard.name }}
         run: |
-          set -euo pipefail
+          # Sin `-e` A PROPOSITO: una region que falla no puede tumbar el shard entero.
+          # Geofabrik tiene incidencias -el 2026-07-30 su proxy devolvia 502 hasta para
+          # un .md5 de 100 bytes-, y con `-e` un solo 502 tiraba tambien las 81 regiones
+          # ya construidas del shard. Se apunta la fallida, se sigue, y el modo `repair`
+          # las recoge despues.
+          set -uo pipefail
           mkdir -p dist
+          : > fallidas.txt
           echo "Shard $SHARD"
           for id in ${IDS:-}; do
             url=$(jq -r --arg id "$id" '.regions[] | select(.id==$id) | .source // empty' regions.json)
             if [ -z "$url" ]; then
               echo "::error::region desconocida en regions.json: $id"
-              exit 1
+              echo "$id" >> fallidas.txt
+              continue
             fi
             echo "::group::$id"
-            curl -fL --retry 3 --retry-delay 5 -o "$id.osm.pbf" "$url"
-            ls -lh "$id.osm.pbf"
-            python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"
+            # Reintento con espera EXPONENCIAL (1s, 2s, 4s... ~4 min en total). Omitir
+            # --retry-delay es lo que la activa: con un retardo fijo curl no la aplica.
+            # Los 3 reintentos cada 5 s de antes se agotaban en 15 segundos, que no cubre
+            # ni la mas breve de las incidencias de Geofabrik.
+            if curl -fL --retry 8 --retry-max-time 1200 --retry-all-errors -o "$id.osm.pbf" "$url"; then
+              ls -lh "$id.osm.pbf"
+              if ! python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"; then
+                echo "::warning::$id: fallo la construccion del extracto"
+                echo "$id" >> fallidas.txt
+                rm -f "dist/$id.sqlite"
+              fi
+            else
+              echo "::warning::$id: Geofabrik no sirvio el .pbf"
+              echo "$id" >> fallidas.txt
+            fi
             # Liberar disco antes de la siguiente: los runners traen ~14 GB libres y
             # un .pbf de pais grande se los come.
             rm -f "$id.osm.pbf"
             echo "::endgroup::"
           done
           df -h / | tail -1
-          ls -lh dist/
+          ls -lh dist/ || true
 
       - name: Metadatos de las regiones de este shard
         # El .sqlite sube directo al Release y de aqui solo sale este JSON minusculo.
         # Mover los GB dos veces (artefacto y descarga en el job final) costaria mas
         # tiempo que construirlos.
+        if: hashFiles('dist/*.sqlite') != ''
         run: python scripts/build_catalog.py --regions regions.json --dist dist --emit-meta meta
 
       - name: Subir los extractos al Release
+        if: hashFiles('dist/*.sqlite') != ''
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ needs.plan.outputs.tag }}
@@ -168,11 +189,24 @@ jobs:
           gh release upload "$TAG" dist/*.sqlite --clobber
 
       - name: Guardar los metadatos
+        if: hashFiles('dist/*.sqlite') != ''
         uses: actions/upload-artifact@v4
         with:
           name: meta-${{ matrix.shard.name }}
           path: meta/
           retention-days: 7
+
+      - name: Regiones que no salieron
+        # DESPUES de subir lo que si salio: el shard se marca en rojo para que se vea,
+        # pero sin perder el trabajo bueno. `repair` reconstruye solo estas.
+        if: always()
+        run: |
+          set -uo pipefail
+          if [ -s fallidas.txt ]; then
+            echo "::error::$(wc -l < fallidas.txt) regiones sin construir en este shard: $(tr '\n' ' ' < fallidas.txt)"
+            echo "Relanza el workflow con **repair** marcado para reconstruir solo estas." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
 
   # ---------------------------------------------------------------------------
   # 3. Un solo catalogo con TODAS las regiones, y publicar
@@ -275,8 +309,10 @@ jobs:
             echo "| huella del filtro | \`$FINGERPRINT\` |"
             echo
             if [ "$BUILD_RESULT" != "success" ]; then
-              echo "> **Algun shard fallo.** El catalogo hereda esas regiones del Release"
-              echo "> anterior. Lanza el workflow con **repair** marcado para rellenarlas."
+              echo "> **Faltan regiones.** El catalogo hereda del Release anterior las que"
+              echo "> siguen sirviendo y descarta las desfasadas. Para rellenarlas: **Run"
+              echo "> workflow** con **repair** marcado y el MISMO \`scope\`, una vez este"
+              echo "> Release ya publicado (repair rellena el vigente, no crea otro)."
               echo
             fi
             if [ "$ATTEMPT" != "1" ]; then

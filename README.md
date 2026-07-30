@@ -45,6 +45,12 @@ Geofabrik (.osm.pbf)
 El workflow `.github/workflows/build-extracts.yml` corre **el dia 1 de enero, abril,
 julio y octubre**, y tambien a mano (`workflow_dispatch`).
 
+**Geofabrik falla a veces**, y no por carga nuestra: el 2026-07-30 su proxy devolvía
+**502 para cualquier `.pbf`**, incluido un `.md5` de 100 bytes. Por eso una región que no
+se descarga **no tumba su shard**: se apunta, el resto sigue, y el modo `repair`
+reconstruye después solo las que faltan. El `curl` reintenta con espera exponencial
+(~4 min); si aun así no hay servicio, es una incidencia y toca esperar.
+
 Se construye en **matriz**: `plan_build.py` reparte las regiones en shards de ~4 GB
 (25 para el mundo, 9 para Europa) para que ningun job dure horas y un fallo se relance
 solo. Cada shard sube sus `.sqlite` directamente al Release —que se crea como
@@ -58,7 +64,7 @@ la app necesita todas las regiones en uno.
 | Entrada | Para que |
 |---|---|
 | `scope` | Continentes o ids de region separados por espacios. Vacio = el mundo. Ej.: `europe`, `asia africa`, `kansai kanto` |
-| `repair` | Construye **solo** las regiones que falten en el Release vigente y lo rellena en su sitio, sin crear uno nuevo. Para el trimestre en que un shard falla |
+| `repair` | Construye **solo** las regiones que falten en el Release vigente y lo rellena en su sitio, sin crear uno nuevo. Pásale el **mismo `scope`** que la corrida original |
 | `publish` | Desmarcar para probar sin tocar el catalogo vivo |
 
 > **Aviso:** GitHub **desactiva los workflows programados tras 60 dias sin actividad en el
