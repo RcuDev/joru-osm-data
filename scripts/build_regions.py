@@ -37,11 +37,12 @@ Se valida con `--verify`, que comprueba ciudades reales de los casos limite.
 
 PODA (medida el 2026-07-29, ver PRUNE mas abajo)
 ------------------------------------------------
-El recubrimiento en bruto son 530 regiones y 138,5 GB de descarga en CI, MAS que el
-planeta entero (87 GB), porque acepta regiones que se solapan. La poda quita las que
-NINGUN destino del mundo elegiria jamas. El criterio NO es el area -eso ya se intento y
-colapso el corte a 28 regiones dejando a Londres en `europe`-: es la DEMANDA, medida
-sobre las 235.063 localidades de GeoNames de mas de 500 habitantes.
+El recubrimiento en bruto son 530 regiones y 170,9 GB de descarga en CI, casi el DOBLE
+del planeta entero (87 GB), porque acepta regiones que se solapan. La poda lo deja en
+511 regiones y 83,3 GB (-51%) quitando las que NINGUN destino del mundo elegiria jamas.
+El criterio NO es el area -eso ya se intento y colapso el corte a 28 regiones dejando a
+Londres en `europe`-: es la DEMANDA, medida sobre las 235.063 localidades de GeoNames de
+mas de 500 habitantes.
 
 Uso:
     pip install numpy
@@ -290,6 +291,11 @@ def prune_cover(cover: list[dict], sizes: dict[str, int | None], cities) -> tupl
 # estructural anterior. Londres es la mas importante -`enfield` figura como hijo de
 # `greater-london`, asi que "prefiere los hijos" se quedaba con un barrio y tiraba la
 # ciudad-. Las demas son territorios que colgaban de un continente sin codigo ISO.
+#
+# Remate de la historia de `enfield`: ademas de romper la regla estructural, resulta que
+# Geofabrik ni siquiera publica su .pbf -lo anuncia en el indice y redirige a su portada-,
+# asi que se cae del corte por fantasma y Enfield resuelve a `greater-london`. Sigue en
+# esta lista precisamente para comprobar que ese barrio no se queda sin cobertura.
 VERIFY_CITIES = [
     ("Londres", -0.1276, 51.5072), ("Enfield", -0.0800, 51.6520),
     ("Edimburgo", -3.1883, 55.9533), ("Cardiff", -3.1791, 51.4816),
@@ -340,13 +346,23 @@ def verify_cover(cover: list[dict]) -> list[str]:
     return failures
 
 
-def pbf_size(url: str) -> int | None:
+def pbf_head(url: str) -> tuple[int | None, str | None]:
+    """Tamano y tipo de contenido del extracto, sin descargarlo.
+
+    El tipo importa tanto como el tamano: hay entradas del indice cuyo fichero ya no
+    existe y que, en vez de dar 404, REDIRIGEN a la portada de Geofabrik y sirven el
+    HTML con un 200. Le paso a `enfield`, y como pesa 9.609 bytes no hay umbral de
+    tamano que lo distinga de un extracto minusculo de verdad: hay que mirar el tipo.
+    """
     try:
         request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT}, method="HEAD")
         with urllib.request.urlopen(request, timeout=60) as response:
-            return int(response.headers.get("Content-Length", 0)) or None
+            return (int(response.headers.get("Content-Length", 0)) or None,
+                    response.headers.get("Content-Type", ""))
     except Exception:
-        return None
+        # Un fallo de red NO es lo mismo que un extracto inexistente: se devuelve tipo
+        # None para que la region se conserve en vez de caerse del corte por un 502.
+        return None, None
 
 
 def region_id(geofabrik_id: str) -> str:
@@ -387,11 +403,31 @@ def main() -> int:
     # Los tamanos no son informativos: la poda los necesita para descartar regiones
     # imposibles de bajar en un movil, y el workflow para repartir la matriz por peso.
     print("consultando tamanos (HEAD, sin descargar)...")
+    urls = {p["id"]: p["urls"]["pbf"] for p in cover}
     with ThreadPoolExecutor(max_workers=12) as pool:
-        urls = [(p["id"], p["urls"]["pbf"]) for p in cover]
-        sizes = {region: size for (region, _), size
-                 in zip(urls, pool.map(lambda x: pbf_size(x[1]), urls))}
-    bruto = sum(s for s in sizes.values() if s)
+        heads = dict(zip(urls, pool.map(pbf_head, urls.values())))
+
+    # Segunda pasada sobre las que no contestaron. No es cosmetica: sin tamano, la regla
+    # que descarta las regiones imposibles de bajar en un movil no puede aplicarse, y un
+    # 502 pasajero colaria `asia` -799 MB de SQLite- en el catalogo sin que se notara.
+    fallidas = [r for r, (size, kind) in heads.items() if size is None and kind is None]
+    if fallidas:
+        print(f"   reintentando {len(fallidas)} que no contestaron...")
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            heads.update(zip(fallidas, pool.map(lambda r: pbf_head(urls[r]), fallidas)))
+        mudas = [r for r in fallidas if heads[r][0] is None]
+        if mudas:
+            print(f"   AVISO: {len(mudas)} regiones siguen sin tamano, no se pueden "
+                  f"descartar por peso: {', '.join(sorted(mudas)[:10])}")
+
+    # Fuera las que el indice anuncia pero Geofabrik ya no publica: sirven su portada
+    # en HTML con un 200, asi que se descargarian "bien" y reventarian luego en osmium.
+    fantasmas = [r for r, (_, kind) in heads.items() if kind and "html" in kind.lower()]
+    for region in fantasmas:
+        print(f"   fuera  {region:28s} el indice la anuncia pero Geofabrik no la publica")
+    cover = [p for p in cover if p["id"] not in fantasmas]
+    sizes = {region: size for region, (size, _) in heads.items()}
+    bruto = sum(sizes.get(p["id"]) or 0 for p in cover)
     print(f"en bruto: {bruto / 2**30:,.1f} GB de pbf -> SQLite estimado {bruto * SQLITE_RATIO / 2**30:,.2f} GB")
 
     if not args.no_prune:

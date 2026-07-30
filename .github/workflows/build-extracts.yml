@@ -153,16 +153,22 @@ jobs:
             # --retry-delay es lo que la activa: con un retardo fijo curl no la aplica.
             # Los 3 reintentos cada 5 s de antes se agotaban en 15 segundos, que no cubre
             # ni la mas breve de las incidencias de Geofabrik.
-            if curl -fL --retry 8 --retry-max-time 1200 --retry-all-errors -o "$id.osm.pbf" "$url"; then
-              ls -lh "$id.osm.pbf"
-              if ! python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"; then
-                echo "::warning::$id: fallo la construccion del extracto"
-                echo "$id" >> fallidas.txt
-                rm -f "dist/$id.sqlite"
-              fi
-            else
+            if ! curl -fL --retry 8 --retry-max-time 1200 --retry-all-errors -o "$id.osm.pbf" "$url"; then
               echo "::warning::$id: Geofabrik no sirvio el .pbf"
               echo "$id" >> fallidas.txt
+            # Un .pbf de verdad lleva "OSMHeader" en sus primeros bytes. Hay entradas del
+            # indice de Geofabrik cuyo fichero ya no existe: en vez de un 404, REDIRIGEN a
+            # su portada y sirven el HTML con un 200, asi que `curl -f` lo da por bueno y
+            # se guarda una pagina web con extension .pbf (paso con `enfield`, 9.609 bytes
+            # de HTML). Sin esta comprobacion el sintoma es un RuntimeError de osmium
+            # sobre una cabecera invalida, que no dice nada de lo que pasa de verdad.
+            elif ! head -c 64 "$id.osm.pbf" | grep -aq OSMHeader; then
+              echo "::warning::$id: lo que sirve Geofabrik no es un .pbf ($(file -b "$id.osm.pbf"))"
+              echo "$id" >> fallidas.txt
+            elif ! python scripts/build_extract.py "$id.osm.pbf" "dist/$id.sqlite" --region "$id"; then
+              echo "::warning::$id: fallo la construccion del extracto"
+              echo "$id" >> fallidas.txt
+              rm -f "dist/$id.sqlite"
             fi
             # Liberar disco antes de la siguiente: los runners traen ~14 GB libres y
             # un .pbf de pais grande se los come.

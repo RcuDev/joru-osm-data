@@ -8,7 +8,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/act-latest.osm.pbf",
-      "pbf_bytes": 18673503
+      "pbf_bytes": 18680965
     },
     {
       "id": "afghanistan",
@@ -16,7 +16,7 @@
       "country": "AF",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/afghanistan-latest.osm.pbf",
-      "pbf_bytes": 112261028
+      "pbf_bytes": 112264134
     },
     {
       "id": "albania",
@@ -24,7 +24,7 @@
       "country": "AL",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/albania-latest.osm.pbf",
-      "pbf_bytes": 53771747
+      "pbf_bytes": 53776297
     },
     {
       "id": "alberta",
@@ -32,7 +32,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/alberta-latest.osm.pbf",
-      "pbf_bytes": 346434888
+      "pbf_bytes": 346679442
     },
     {
       "id": "algeria",
@@ -40,7 +40,7 @@
       "country": "DZ",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/algeria-latest.osm.pbf",
-      "pbf_bytes": 299073853
+      "pbf_bytes": 299092322
     },
     {
       "id": "alsace",
@@ -48,7 +48,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/alsace-latest.osm.pbf",
-      "pbf_bytes": 130028516
+      "pbf_bytes": 130084311
     },
     {
       "id": "american-oceania",
@@ -56,7 +56,7 @@
       "country": "VU",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/american-oceania-latest.osm.pbf",
-      "pbf_bytes": 5345823
+      "pbf_bytes": 5356379
     },
     {
       "id": "andalucia",
@@ -64,7 +64,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/andalucia-latest.osm.pbf",
-      "pbf_bytes": 191470812
+      "pbf_bytes": 191567427
     },
     {
       "id": "andorra",
@@ -72,7 +72,7 @@
       "country": "AD",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/andorra-latest.osm.pbf",
-      "pbf_bytes": 3425426
+      "pbf_bytes": 3425882
     },
     {
       "id": "angola",
@@ -80,7 +80,7 @@
       "country": "AO",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/angola-latest.osm.pbf",
-      "pbf_bytes": 84901428
+      "pbf_bytes": 84901835
     },
     {
       "id": "anhui",
@@ -88,7 +88,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/anhui-latest.osm.pbf",
-      "pbf_bytes": 43122938
+      "pbf_bytes": 43139728
     },
     {
       "id": "aquitaine",
@@ -96,7 +96,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/aquitaine-latest.osm.pbf",
-      "pbf_bytes": 294103848
+      "pbf_bytes": 294128570
     },
     {
       "id": "aragon",
@@ -104,7 +104,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/aragon-latest.osm.pbf",
-      "pbf_bytes": 93144424
+      "pbf_bytes": 93147708
     },
     {
       "id": "argentina",
@@ -112,7 +112,7 @@
       "country": "AR",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/argentina-latest.osm.pbf",
-      "pbf_bytes": 425708514
+      "pbf_bytes": 425726882
     },
     {
       "id": "armenia",
@@ -120,7 +120,7 @@
       "country": "AM",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/armenia-latest.osm.pbf",
-      "pbf_bytes": 52788402
+      "pbf_bytes": 52791503
     },
     {
       "id": "arnsberg-regbez",
@@ -128,7 +128,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen/arnsberg-regbez-latest.osm.pbf",
-      "pbf_bytes": 193895671
+      "pbf_bytes": 193907675
     },
     {
       "id": "asturias",
@@ -136,7 +136,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/asturias-latest.osm.pbf",
-      "pbf_bytes": 36068304
+      "pbf_bytes": 36074291
     },
     {
       "id": "australia-oceania",
@@ -144,7 +144,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania-latest.osm.pbf",
-      "pbf_bytes": 1552633592
+      "pbf_bytes": 1552980356
     },
     {
       "id": "austria",
@@ -152,7 +152,7 @@
       "country": "AT",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/austria-latest.osm.pbf",
-      "pbf_bytes": 805295241
+      "pbf_bytes": 805378694
     },
     {
       "id": "auvergne",
@@ -160,7 +160,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/auvergne-latest.osm.pbf",
-      "pbf_bytes": 153870319
+      "pbf_bytes": 153880790
     },
     {
       "id": "azerbaijan",
@@ -168,7 +168,7 @@
       "country": "AZ",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf",
-      "pbf_bytes": 45603330
+      "pbf_bytes": 45614199
     },
     {
       "id": "azores",
@@ -176,7 +176,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/azores-latest.osm.pbf",
-      "pbf_bytes": 17613112
+      "pbf_bytes": 17613675
     },
     {
       "id": "bahamas",
@@ -192,7 +192,7 @@
       "country": "BD",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/bangladesh-latest.osm.pbf",
-      "pbf_bytes": 351083349
+      "pbf_bytes": 351265101
     },
     {
       "id": "basse-normandie",
@@ -200,7 +200,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/basse-normandie-latest.osm.pbf",
-      "pbf_bytes": 142908922
+      "pbf_bytes": 142918500
     },
     {
       "id": "bedfordshire",
@@ -208,7 +208,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/bedfordshire-latest.osm.pbf",
-      "pbf_bytes": 14776445
+      "pbf_bytes": 14781317
     },
     {
       "id": "beijing",
@@ -216,7 +216,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/beijing-latest.osm.pbf",
-      "pbf_bytes": 36476465
+      "pbf_bytes": 36482161
     },
     {
       "id": "belarus",
@@ -224,7 +224,7 @@
       "country": "BY",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/belarus-latest.osm.pbf",
-      "pbf_bytes": 347138379
+      "pbf_bytes": 347215802
     },
     {
       "id": "belgium",
@@ -232,7 +232,7 @@
       "country": "BE",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/belgium-latest.osm.pbf",
-      "pbf_bytes": 690435372
+      "pbf_bytes": 690505125
     },
     {
       "id": "belize",
@@ -240,7 +240,7 @@
       "country": "BZ",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/belize-latest.osm.pbf",
-      "pbf_bytes": 18201939
+      "pbf_bytes": 18201942
     },
     {
       "id": "benin",
@@ -248,7 +248,7 @@
       "country": "BJ",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/benin-latest.osm.pbf",
-      "pbf_bytes": 47896339
+      "pbf_bytes": 47905492
     },
     {
       "id": "berkshire",
@@ -256,7 +256,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/berkshire-latest.osm.pbf",
-      "pbf_bytes": 22374970
+      "pbf_bytes": 22379094
     },
     {
       "id": "berlin",
@@ -264,7 +264,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf",
-      "pbf_bytes": 98726406
+      "pbf_bytes": 98747907
     },
     {
       "id": "bermuda",
@@ -280,7 +280,7 @@
       "country": "BT",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/bhutan-latest.osm.pbf",
-      "pbf_bytes": 23577576
+      "pbf_bytes": 23579164
     },
     {
       "id": "bolivia",
@@ -288,7 +288,7 @@
       "country": "BO",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/bolivia-latest.osm.pbf",
-      "pbf_bytes": 172307570
+      "pbf_bytes": 172326166
     },
     {
       "id": "bosnia-herzegovina",
@@ -296,7 +296,7 @@
       "country": "BA",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/bosnia-herzegovina-latest.osm.pbf",
-      "pbf_bytes": 159506546
+      "pbf_bytes": 159520912
     },
     {
       "id": "botswana",
@@ -304,7 +304,7 @@
       "country": "BW",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/botswana-latest.osm.pbf",
-      "pbf_bytes": 87944390
+      "pbf_bytes": 87964058
     },
     {
       "id": "bourgogne",
@@ -312,7 +312,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/bourgogne-latest.osm.pbf",
-      "pbf_bytes": 198918666
+      "pbf_bytes": 198946406
     },
     {
       "id": "brandenburg",
@@ -320,7 +320,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/brandenburg-latest.osm.pbf",
-      "pbf_bytes": 298130844
+      "pbf_bytes": 298158823
     },
     {
       "id": "bremen",
@@ -328,7 +328,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bremen-latest.osm.pbf",
-      "pbf_bytes": 21091815
+      "pbf_bytes": 21093245
     },
     {
       "id": "bretagne",
@@ -336,7 +336,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/bretagne-latest.osm.pbf",
-      "pbf_bytes": 326801624
+      "pbf_bytes": 326872586
     },
     {
       "id": "bristol",
@@ -344,7 +344,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/bristol-latest.osm.pbf",
-      "pbf_bytes": 13208431
+      "pbf_bytes": 13208938
     },
     {
       "id": "buckinghamshire",
@@ -352,7 +352,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/buckinghamshire-latest.osm.pbf",
-      "pbf_bytes": 22329468
+      "pbf_bytes": 22340696
     },
     {
       "id": "bulgaria",
@@ -360,7 +360,7 @@
       "country": "BG",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/bulgaria-latest.osm.pbf",
-      "pbf_bytes": 170466095
+      "pbf_bytes": 170571185
     },
     {
       "id": "burkina-faso",
@@ -368,7 +368,7 @@
       "country": "BF",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/burkina-faso-latest.osm.pbf",
-      "pbf_bytes": 84446099
+      "pbf_bytes": 84446505
     },
     {
       "id": "burundi",
@@ -376,7 +376,7 @@
       "country": "BI",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/burundi-latest.osm.pbf",
-      "pbf_bytes": 46190862
+      "pbf_bytes": 46189697
     },
     {
       "id": "cambodia",
@@ -384,7 +384,7 @@
       "country": "KH",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/cambodia-latest.osm.pbf",
-      "pbf_bytes": 40269859
+      "pbf_bytes": 40274342
     },
     {
       "id": "cambridgeshire",
@@ -392,7 +392,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/cambridgeshire-latest.osm.pbf",
-      "pbf_bytes": 34371849
+      "pbf_bytes": 34379317
     },
     {
       "id": "cameroon",
@@ -400,7 +400,7 @@
       "country": "CM",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/cameroon-latest.osm.pbf",
-      "pbf_bytes": 222963841
+      "pbf_bytes": 222964772
     },
     {
       "id": "canary-islands",
@@ -408,7 +408,7 @@
       "country": "",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf",
-      "pbf_bytes": 59584660
+      "pbf_bytes": 59586399
     },
     {
       "id": "cantabria",
@@ -416,7 +416,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/cantabria-latest.osm.pbf",
-      "pbf_bytes": 35214059
+      "pbf_bytes": 35224972
     },
     {
       "id": "cape-verde",
@@ -424,7 +424,7 @@
       "country": "CV",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/cape-verde-latest.osm.pbf",
-      "pbf_bytes": 11677832
+      "pbf_bytes": 11678031
     },
     {
       "id": "castilla-la-mancha",
@@ -432,7 +432,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/castilla-la-mancha-latest.osm.pbf",
-      "pbf_bytes": 104824741
+      "pbf_bytes": 104847920
     },
     {
       "id": "castilla-y-leon",
@@ -440,7 +440,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/castilla-y-leon-latest.osm.pbf",
-      "pbf_bytes": 173742433
+      "pbf_bytes": 173747494
     },
     {
       "id": "cataluna",
@@ -448,7 +448,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf",
-      "pbf_bytes": 266149112
+      "pbf_bytes": 266199338
     },
     {
       "id": "central-african-republic",
@@ -456,7 +456,7 @@
       "country": "CF",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/central-african-republic-latest.osm.pbf",
-      "pbf_bytes": 99356110
+      "pbf_bytes": 99356121
     },
     {
       "id": "central-america",
@@ -464,7 +464,7 @@
       "country": "",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america-latest.osm.pbf",
-      "pbf_bytes": 782794318
+      "pbf_bytes": 783672755
     },
     {
       "id": "central-fed-district",
@@ -472,7 +472,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf",
-      "pbf_bytes": 870533571
+      "pbf_bytes": 870682283
     },
     {
       "id": "central-zone",
@@ -480,7 +480,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/central-zone-latest.osm.pbf",
-      "pbf_bytes": 350265638
+      "pbf_bytes": 350314786
     },
     {
       "id": "centre",
@@ -488,7 +488,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/centre-latest.osm.pbf",
-      "pbf_bytes": 241377093
+      "pbf_bytes": 241417101
     },
     {
       "id": "centro",
@@ -496,7 +496,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/italy/centro-latest.osm.pbf",
-      "pbf_bytes": 380994393
+      "pbf_bytes": 381022849
     },
     {
       "id": "centro-oeste",
@@ -504,7 +504,7 @@
       "country": "",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/brazil/centro-oeste-latest.osm.pbf",
-      "pbf_bytes": 200593773
+      "pbf_bytes": 200620421
     },
     {
       "id": "ceuta",
@@ -512,7 +512,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/ceuta-latest.osm.pbf",
-      "pbf_bytes": 588629
+      "pbf_bytes": 588637
     },
     {
       "id": "chad",
@@ -520,7 +520,7 @@
       "country": "TD",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/chad-latest.osm.pbf",
-      "pbf_bytes": 134619384
+      "pbf_bytes": 134631556
     },
     {
       "id": "champagne-ardenne",
@@ -528,7 +528,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/champagne-ardenne-latest.osm.pbf",
-      "pbf_bytes": 104725196
+      "pbf_bytes": 104742280
     },
     {
       "id": "cheshire",
@@ -536,7 +536,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/cheshire-latest.osm.pbf",
-      "pbf_bytes": 37822711
+      "pbf_bytes": 37830549
     },
     {
       "id": "chile",
@@ -544,7 +544,7 @@
       "country": "CL",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/chile-latest.osm.pbf",
-      "pbf_bytes": 345314707
+      "pbf_bytes": 345322719
     },
     {
       "id": "chongqing",
@@ -552,7 +552,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/chongqing-latest.osm.pbf",
-      "pbf_bytes": 30550250
+      "pbf_bytes": 30552170
     },
     {
       "id": "christmas-island",
@@ -568,7 +568,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/chubu-latest.osm.pbf",
-      "pbf_bytes": 506670748
+      "pbf_bytes": 506736209
     },
     {
       "id": "chugoku",
@@ -576,7 +576,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/chugoku-latest.osm.pbf",
-      "pbf_bytes": 229080990
+      "pbf_bytes": 229632386
     },
     {
       "id": "cocos-islands",
@@ -584,7 +584,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/cocos-islands-latest.osm.pbf",
-      "pbf_bytes": 264306
+      "pbf_bytes": 264480
     },
     {
       "id": "colombia",
@@ -592,7 +592,7 @@
       "country": "CO",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/colombia-latest.osm.pbf",
-      "pbf_bytes": 322793836
+      "pbf_bytes": 322851279
     },
     {
       "id": "comores",
@@ -608,7 +608,7 @@
       "country": "CG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/congo-brazzaville-latest.osm.pbf",
-      "pbf_bytes": 32335490
+      "pbf_bytes": 32335407
     },
     {
       "id": "congo-democratic-republic",
@@ -616,7 +616,7 @@
       "country": "CD",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/congo-democratic-republic-latest.osm.pbf",
-      "pbf_bytes": 414319908
+      "pbf_bytes": 414371962
     },
     {
       "id": "cook-islands",
@@ -624,7 +624,7 @@
       "country": "CK",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/cook-islands-latest.osm.pbf",
-      "pbf_bytes": 960314
+      "pbf_bytes": 960372
     },
     {
       "id": "cornwall",
@@ -632,7 +632,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/cornwall-latest.osm.pbf",
-      "pbf_bytes": 33716091
+      "pbf_bytes": 33724081
     },
     {
       "id": "corse",
@@ -640,7 +640,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/corse-latest.osm.pbf",
-      "pbf_bytes": 33980221
+      "pbf_bytes": 33985652
     },
     {
       "id": "costa-rica",
@@ -648,7 +648,7 @@
       "country": "CR",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/costa-rica-latest.osm.pbf",
-      "pbf_bytes": 38787013
+      "pbf_bytes": 38793600
     },
     {
       "id": "crimean-fed-district",
@@ -656,7 +656,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/crimean-fed-district-latest.osm.pbf",
-      "pbf_bytes": 40350534
+      "pbf_bytes": 40352836
     },
     {
       "id": "croatia",
@@ -664,7 +664,7 @@
       "country": "HR",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/croatia-latest.osm.pbf",
-      "pbf_bytes": 197876732
+      "pbf_bytes": 197898726
     },
     {
       "id": "cuba",
@@ -672,7 +672,7 @@
       "country": "CU",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/cuba-latest.osm.pbf",
-      "pbf_bytes": 61120190
+      "pbf_bytes": 61120511
     },
     {
       "id": "cumbria",
@@ -680,7 +680,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/cumbria-latest.osm.pbf",
-      "pbf_bytes": 45213361
+      "pbf_bytes": 45223487
     },
     {
       "id": "cyprus",
@@ -688,7 +688,7 @@
       "country": "CY",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/cyprus-latest.osm.pbf",
-      "pbf_bytes": 36844483
+      "pbf_bytes": 36853843
     },
     {
       "id": "denmark",
@@ -696,7 +696,7 @@
       "country": "DK",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/denmark-latest.osm.pbf",
-      "pbf_bytes": 491855657
+      "pbf_bytes": 491886499
     },
     {
       "id": "derbyshire",
@@ -704,7 +704,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/derbyshire-latest.osm.pbf",
-      "pbf_bytes": 43481367
+      "pbf_bytes": 43484236
     },
     {
       "id": "detmold-regbez",
@@ -712,7 +712,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen/detmold-regbez-latest.osm.pbf",
-      "pbf_bytes": 135443470
+      "pbf_bytes": 135512698
     },
     {
       "id": "devon",
@@ -720,7 +720,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/devon-latest.osm.pbf",
-      "pbf_bytes": 57383294
+      "pbf_bytes": 57406614
     },
     {
       "id": "djibouti",
@@ -736,7 +736,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/dolnoslaskie-latest.osm.pbf",
-      "pbf_bytes": 178646097
+      "pbf_bytes": 178716305
     },
     {
       "id": "dorset",
@@ -744,7 +744,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/dorset-latest.osm.pbf",
-      "pbf_bytes": 29961066
+      "pbf_bytes": 29961218
     },
     {
       "id": "drenthe",
@@ -752,7 +752,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/drenthe-latest.osm.pbf",
-      "pbf_bytes": 62876187
+      "pbf_bytes": 62879124
     },
     {
       "id": "duesseldorf-regbez",
@@ -760,7 +760,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen/duesseldorf-regbez-latest.osm.pbf",
-      "pbf_bytes": 214790289
+      "pbf_bytes": 214818730
     },
     {
       "id": "durham",
@@ -768,7 +768,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/durham-latest.osm.pbf",
-      "pbf_bytes": 23281006
+      "pbf_bytes": 23293004
     },
     {
       "id": "east-sussex",
@@ -776,7 +776,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/east-sussex-latest.osm.pbf",
-      "pbf_bytes": 21112725
+      "pbf_bytes": 21124604
     },
     {
       "id": "east-timor",
@@ -784,7 +784,7 @@
       "country": "TL",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/east-timor-latest.osm.pbf",
-      "pbf_bytes": 17764094
+      "pbf_bytes": 17764091
     },
     {
       "id": "east-yorkshire-with-hull",
@@ -792,7 +792,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/east-yorkshire-with-hull-latest.osm.pbf",
-      "pbf_bytes": 19211473
+      "pbf_bytes": 19213861
     },
     {
       "id": "eastern-zone",
@@ -800,7 +800,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/eastern-zone-latest.osm.pbf",
-      "pbf_bytes": 247388882
+      "pbf_bytes": 247407739
     },
     {
       "id": "ecuador",
@@ -808,7 +808,7 @@
       "country": "EC",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/ecuador-latest.osm.pbf",
-      "pbf_bytes": 124286545
+      "pbf_bytes": 124331974
     },
     {
       "id": "egypt",
@@ -816,7 +816,7 @@
       "country": "EG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/egypt-latest.osm.pbf",
-      "pbf_bytes": 177531998
+      "pbf_bytes": 177551282
     },
     {
       "id": "el-salvador",
@@ -824,15 +824,7 @@
       "country": "SV",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/el-salvador-latest.osm.pbf",
-      "pbf_bytes": 34814427
-    },
-    {
-      "id": "enfield",
-      "name": "Enfield",
-      "country": "",
-      "continent": "europe",
-      "source": "https://download.geofabrik.de/europe/united-kingdom/england/london/enfield-latest.osm.pbf",
-      "pbf_bytes": 9609
+      "pbf_bytes": 34820190
     },
     {
       "id": "england",
@@ -840,7 +832,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england-latest.osm.pbf",
-      "pbf_bytes": 1677770599
+      "pbf_bytes": 1678186985
     },
     {
       "id": "equatorial-guinea",
@@ -856,7 +848,7 @@
       "country": "ER",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/eritrea-latest.osm.pbf",
-      "pbf_bytes": 31016514
+      "pbf_bytes": 31030944
     },
     {
       "id": "essex",
@@ -864,7 +856,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/essex-latest.osm.pbf",
-      "pbf_bytes": 49301894
+      "pbf_bytes": 49318077
     },
     {
       "id": "estonia",
@@ -872,7 +864,7 @@
       "country": "EE",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/estonia-latest.osm.pbf",
-      "pbf_bytes": 121675703
+      "pbf_bytes": 121677443
     },
     {
       "id": "ethiopia",
@@ -880,7 +872,7 @@
       "country": "ET",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/ethiopia-latest.osm.pbf",
-      "pbf_bytes": 138957337
+      "pbf_bytes": 138978878
     },
     {
       "id": "extremadura",
@@ -888,7 +880,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/extremadura-latest.osm.pbf",
-      "pbf_bytes": 39532056
+      "pbf_bytes": 39535388
     },
     {
       "id": "falklands",
@@ -896,7 +888,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/falklands-latest.osm.pbf",
-      "pbf_bytes": 5518247
+      "pbf_bytes": 5519125
     },
     {
       "id": "far-eastern-fed-district",
@@ -904,7 +896,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/far-eastern-fed-district-latest.osm.pbf",
-      "pbf_bytes": 382626201
+      "pbf_bytes": 382792072
     },
     {
       "id": "faroe-islands",
@@ -912,7 +904,7 @@
       "country": "FO",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/faroe-islands-latest.osm.pbf",
-      "pbf_bytes": 7720094
+      "pbf_bytes": 7720189
     },
     {
       "id": "fiji",
@@ -928,7 +920,7 @@
       "country": "FI",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/finland-latest.osm.pbf",
-      "pbf_bytes": 736649337
+      "pbf_bytes": 736753875
     },
     {
       "id": "flevoland",
@@ -936,7 +928,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/flevoland-latest.osm.pbf",
-      "pbf_bytes": 34428527
+      "pbf_bytes": 34451963
     },
     {
       "id": "franche-comte",
@@ -944,7 +936,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/franche-comte-latest.osm.pbf",
-      "pbf_bytes": 123610704
+      "pbf_bytes": 123621552
     },
     {
       "id": "freiburg-regbez",
@@ -952,7 +944,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/baden-wuerttemberg/freiburg-regbez-latest.osm.pbf",
-      "pbf_bytes": 158218914
+      "pbf_bytes": 158231584
     },
     {
       "id": "friesland",
@@ -960,7 +952,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/friesland-latest.osm.pbf",
-      "pbf_bytes": 88191021
+      "pbf_bytes": 88228769
     },
     {
       "id": "fujian",
@@ -968,7 +960,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/fujian-latest.osm.pbf",
-      "pbf_bytes": 41434849
+      "pbf_bytes": 41438990
     },
     {
       "id": "gabon",
@@ -976,7 +968,7 @@
       "country": "GA",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/gabon-latest.osm.pbf",
-      "pbf_bytes": 25359553
+      "pbf_bytes": 25361021
     },
     {
       "id": "galicia",
@@ -984,7 +976,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/galicia-latest.osm.pbf",
-      "pbf_bytes": 110180618
+      "pbf_bytes": 110227629
     },
     {
       "id": "gansu",
@@ -992,7 +984,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/gansu-latest.osm.pbf",
-      "pbf_bytes": 56635973
+      "pbf_bytes": 56661269
     },
     {
       "id": "gcc-states",
@@ -1000,7 +992,7 @@
       "country": "QA",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/gcc-states-latest.osm.pbf",
-      "pbf_bytes": 251841991
+      "pbf_bytes": 251872970
     },
     {
       "id": "gelderland",
@@ -1008,7 +1000,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/gelderland-latest.osm.pbf",
-      "pbf_bytes": 193951720
+      "pbf_bytes": 193957922
     },
     {
       "id": "georgia",
@@ -1016,7 +1008,7 @@
       "country": "GE",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/georgia-latest.osm.pbf",
-      "pbf_bytes": 100441173
+      "pbf_bytes": 100461935
     },
     {
       "id": "ghana",
@@ -1024,7 +1016,7 @@
       "country": "GH",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/ghana-latest.osm.pbf",
-      "pbf_bytes": 114709460
+      "pbf_bytes": 114916493
     },
     {
       "id": "gloucestershire",
@@ -1032,7 +1024,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/gloucestershire-latest.osm.pbf",
-      "pbf_bytes": 40552613
+      "pbf_bytes": 40561737
     },
     {
       "id": "greater-london",
@@ -1040,7 +1032,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf",
-      "pbf_bytes": 127633478
+      "pbf_bytes": 127650100
     },
     {
       "id": "greater-manchester",
@@ -1048,7 +1040,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/greater-manchester-latest.osm.pbf",
-      "pbf_bytes": 50590954
+      "pbf_bytes": 50606251
     },
     {
       "id": "greece",
@@ -1056,7 +1048,7 @@
       "country": "GR",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/greece-latest.osm.pbf",
-      "pbf_bytes": 338630661
+      "pbf_bytes": 338656985
     },
     {
       "id": "greenland",
@@ -1064,7 +1056,7 @@
       "country": "GL",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/greenland-latest.osm.pbf",
-      "pbf_bytes": 25603606
+      "pbf_bytes": 25603523
     },
     {
       "id": "groningen",
@@ -1072,7 +1064,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/groningen-latest.osm.pbf",
-      "pbf_bytes": 56284438
+      "pbf_bytes": 56286295
     },
     {
       "id": "guadeloupe",
@@ -1080,7 +1072,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/guadeloupe-latest.osm.pbf",
-      "pbf_bytes": 24208607
+      "pbf_bytes": 24208644
     },
     {
       "id": "guangdong",
@@ -1088,7 +1080,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/guangdong-latest.osm.pbf",
-      "pbf_bytes": 169628724
+      "pbf_bytes": 169721904
     },
     {
       "id": "guangxi",
@@ -1096,7 +1088,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/guangxi-latest.osm.pbf",
-      "pbf_bytes": 51877956
+      "pbf_bytes": 52092534
     },
     {
       "id": "guatemala",
@@ -1104,7 +1096,7 @@
       "country": "GT",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/guatemala-latest.osm.pbf",
-      "pbf_bytes": 131170357
+      "pbf_bytes": 131182700
     },
     {
       "id": "guernsey-jersey",
@@ -1112,7 +1104,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/guernsey-jersey-latest.osm.pbf",
-      "pbf_bytes": 3879550
+      "pbf_bytes": 3879549
     },
     {
       "id": "guinea",
@@ -1120,7 +1112,7 @@
       "country": "GN",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/guinea-latest.osm.pbf",
-      "pbf_bytes": 117349976
+      "pbf_bytes": 117360599
     },
     {
       "id": "guinea-bissau",
@@ -1128,7 +1120,7 @@
       "country": "GW",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/guinea-bissau-latest.osm.pbf",
-      "pbf_bytes": 11147146
+      "pbf_bytes": 11147665
     },
     {
       "id": "guizhou",
@@ -1136,7 +1128,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/guizhou-latest.osm.pbf",
-      "pbf_bytes": 28401494
+      "pbf_bytes": 28416900
     },
     {
       "id": "guyana",
@@ -1144,7 +1136,7 @@
       "country": "GY",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/guyana-latest.osm.pbf",
-      "pbf_bytes": 15516959
+      "pbf_bytes": 15517070
     },
     {
       "id": "guyane",
@@ -1152,7 +1144,7 @@
       "country": "GF",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/guyane-latest.osm.pbf",
-      "pbf_bytes": 14337782
+      "pbf_bytes": 14337927
     },
     {
       "id": "hainan",
@@ -1168,7 +1160,7 @@
       "country": "HT",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/haiti-and-domrep-latest.osm.pbf",
-      "pbf_bytes": 88417626
+      "pbf_bytes": 88419895
     },
     {
       "id": "hamburg",
@@ -1176,7 +1168,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/hamburg-latest.osm.pbf",
-      "pbf_bytes": 53553680
+      "pbf_bytes": 53569116
     },
     {
       "id": "hampshire",
@@ -1184,7 +1176,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/hampshire-latest.osm.pbf",
-      "pbf_bytes": 61621779
+      "pbf_bytes": 61630382
     },
     {
       "id": "haute-normandie",
@@ -1192,7 +1184,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/haute-normandie-latest.osm.pbf",
-      "pbf_bytes": 106120153
+      "pbf_bytes": 106129602
     },
     {
       "id": "hebei",
@@ -1200,7 +1192,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/hebei-latest.osm.pbf",
-      "pbf_bytes": 106700312
+      "pbf_bytes": 106715259
     },
     {
       "id": "heilongjiang",
@@ -1208,7 +1200,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/heilongjiang-latest.osm.pbf",
-      "pbf_bytes": 36215813
+      "pbf_bytes": 36215958
     },
     {
       "id": "henan",
@@ -1216,7 +1208,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/henan-latest.osm.pbf",
-      "pbf_bytes": 48291169
+      "pbf_bytes": 48315994
     },
     {
       "id": "herefordshire",
@@ -1224,7 +1216,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/herefordshire-latest.osm.pbf",
-      "pbf_bytes": 11121021
+      "pbf_bytes": 11121012
     },
     {
       "id": "hertfordshire",
@@ -1232,7 +1224,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/hertfordshire-latest.osm.pbf",
-      "pbf_bytes": 37953645
+      "pbf_bytes": 37954523
     },
     {
       "id": "hessen",
@@ -1240,7 +1232,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf",
-      "pbf_bytes": 342389830
+      "pbf_bytes": 342473154
     },
     {
       "id": "hokkaido",
@@ -1248,7 +1240,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/hokkaido-latest.osm.pbf",
-      "pbf_bytes": 187730863
+      "pbf_bytes": 187744728
     },
     {
       "id": "honduras",
@@ -1256,7 +1248,7 @@
       "country": "HN",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/honduras-latest.osm.pbf",
-      "pbf_bytes": 73503943
+      "pbf_bytes": 73592021
     },
     {
       "id": "hong-kong",
@@ -1264,7 +1256,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/hong-kong-latest.osm.pbf",
-      "pbf_bytes": 37360296
+      "pbf_bytes": 37382091
     },
     {
       "id": "hubei",
@@ -1272,7 +1264,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/hubei-latest.osm.pbf",
-      "pbf_bytes": 55106450
+      "pbf_bytes": 55113513
     },
     {
       "id": "hunan",
@@ -1280,7 +1272,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/hunan-latest.osm.pbf",
-      "pbf_bytes": 49742404
+      "pbf_bytes": 49771197
     },
     {
       "id": "hungary",
@@ -1288,7 +1280,7 @@
       "country": "HU",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/hungary-latest.osm.pbf",
-      "pbf_bytes": 320945409
+      "pbf_bytes": 321073113
     },
     {
       "id": "iceland",
@@ -1296,7 +1288,7 @@
       "country": "IS",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/iceland-latest.osm.pbf",
-      "pbf_bytes": 64477133
+      "pbf_bytes": 64480895
     },
     {
       "id": "ile-de-france",
@@ -1304,7 +1296,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf",
-      "pbf_bytes": 335797629
+      "pbf_bytes": 335833385
     },
     {
       "id": "inner-mongolia",
@@ -1312,7 +1304,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/inner-mongolia-latest.osm.pbf",
-      "pbf_bytes": 41694307
+      "pbf_bytes": 41698002
     },
     {
       "id": "interior-admreg",
@@ -1320,7 +1312,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/interior-admreg-latest.osm.pbf",
-      "pbf_bytes": 162475009
+      "pbf_bytes": 162474290
     },
     {
       "id": "iran",
@@ -1328,7 +1320,7 @@
       "country": "IR",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/iran-latest.osm.pbf",
-      "pbf_bytes": 228365967
+      "pbf_bytes": 228377950
     },
     {
       "id": "iraq",
@@ -1336,7 +1328,7 @@
       "country": "IQ",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/iraq-latest.osm.pbf",
-      "pbf_bytes": 89905454
+      "pbf_bytes": 89907349
     },
     {
       "id": "ireland-and-northern-ireland",
@@ -1344,7 +1336,7 @@
       "country": "IE",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/ireland-and-northern-ireland-latest.osm.pbf",
-      "pbf_bytes": 408346543
+      "pbf_bytes": 408443820
     },
     {
       "id": "island-admreg",
@@ -1352,7 +1344,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/island-admreg-latest.osm.pbf",
-      "pbf_bytes": 109522211
+      "pbf_bytes": 109524439
     },
     {
       "id": "islas-baleares",
@@ -1360,7 +1352,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/islas-baleares-latest.osm.pbf",
-      "pbf_bytes": 46020098
+      "pbf_bytes": 46034173
     },
     {
       "id": "isle-of-man",
@@ -1368,7 +1360,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/isle-of-man-latest.osm.pbf",
-      "pbf_bytes": 6018757
+      "pbf_bytes": 6019020
     },
     {
       "id": "isle-of-wight",
@@ -1376,7 +1368,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/isle-of-wight-latest.osm.pbf",
-      "pbf_bytes": 8917343
+      "pbf_bytes": 8918008
     },
     {
       "id": "isole",
@@ -1384,7 +1376,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/italy/isole-latest.osm.pbf",
-      "pbf_bytes": 213240103
+      "pbf_bytes": 213261678
     },
     {
       "id": "israel-and-palestine",
@@ -1392,7 +1384,7 @@
       "country": "PS",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/israel-and-palestine-latest.osm.pbf",
-      "pbf_bytes": 119950395
+      "pbf_bytes": 119811593
     },
     {
       "id": "ivory-coast",
@@ -1400,7 +1392,7 @@
       "country": "CI",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/ivory-coast-latest.osm.pbf",
-      "pbf_bytes": 89301163
+      "pbf_bytes": 89306516
     },
     {
       "id": "jamaica",
@@ -1408,7 +1400,7 @@
       "country": "JM",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/jamaica-latest.osm.pbf",
-      "pbf_bytes": 38592266
+      "pbf_bytes": 38592852
     },
     {
       "id": "java",
@@ -1416,7 +1408,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/java-latest.osm.pbf",
-      "pbf_bytes": 894918961
+      "pbf_bytes": 894965004
     },
     {
       "id": "jiangsu",
@@ -1424,7 +1416,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/jiangsu-latest.osm.pbf",
-      "pbf_bytes": 78600643
+      "pbf_bytes": 78603906
     },
     {
       "id": "jiangxi",
@@ -1432,7 +1424,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/jiangxi-latest.osm.pbf",
-      "pbf_bytes": 49246005
+      "pbf_bytes": 49246211
     },
     {
       "id": "jihocesky",
@@ -1440,7 +1432,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/jihocesky-latest.osm.pbf",
-      "pbf_bytes": 96252752
+      "pbf_bytes": 96263222
     },
     {
       "id": "jihomoravsky",
@@ -1448,7 +1440,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/jihomoravsky-latest.osm.pbf",
-      "pbf_bytes": 90971941
+      "pbf_bytes": 90983922
     },
     {
       "id": "jilin",
@@ -1456,7 +1448,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/jilin-latest.osm.pbf",
-      "pbf_bytes": 26784241
+      "pbf_bytes": 26788216
     },
     {
       "id": "jordan",
@@ -1464,7 +1456,7 @@
       "country": "JO",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/jordan-latest.osm.pbf",
-      "pbf_bytes": 31005529
+      "pbf_bytes": 31007065
     },
     {
       "id": "kalimantan",
@@ -1472,7 +1464,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/kalimantan-latest.osm.pbf",
-      "pbf_bytes": 147166996
+      "pbf_bytes": 147169962
     },
     {
       "id": "kaliningrad",
@@ -1480,7 +1472,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/kaliningrad-latest.osm.pbf",
-      "pbf_bytes": 28091734
+      "pbf_bytes": 28102157
     },
     {
       "id": "kansai",
@@ -1488,7 +1480,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/kansai-latest.osm.pbf",
-      "pbf_bytes": 348620845
+      "pbf_bytes": 348699719
     },
     {
       "id": "kanto",
@@ -1496,7 +1488,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/kanto-latest.osm.pbf",
-      "pbf_bytes": 480562658
+      "pbf_bytes": 480881661
     },
     {
       "id": "karlovarsky",
@@ -1504,7 +1496,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/karlovarsky-latest.osm.pbf",
-      "pbf_bytes": 30287218
+      "pbf_bytes": 30306191
     },
     {
       "id": "karlsruhe-regbez",
@@ -1512,7 +1504,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/baden-wuerttemberg/karlsruhe-regbez-latest.osm.pbf",
-      "pbf_bytes": 153460466
+      "pbf_bytes": 153480201
     },
     {
       "id": "kazakhstan",
@@ -1520,7 +1512,7 @@
       "country": "KZ",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf",
-      "pbf_bytes": 219552861
+      "pbf_bytes": 219598783
     },
     {
       "id": "kent",
@@ -1528,7 +1520,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/kent-latest.osm.pbf",
-      "pbf_bytes": 52481946
+      "pbf_bytes": 52485968
     },
     {
       "id": "kenya",
@@ -1536,7 +1528,7 @@
       "country": "KE",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/kenya-latest.osm.pbf",
-      "pbf_bytes": 348800473
+      "pbf_bytes": 348840324
     },
     {
       "id": "kiribati",
@@ -1552,7 +1544,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/nunavut/kitikmeot-latest.osm.pbf",
-      "pbf_bytes": 417235071
+      "pbf_bytes": 417235176
     },
     {
       "id": "kivalliq",
@@ -1568,7 +1560,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf",
-      "pbf_bytes": 223525276
+      "pbf_bytes": 223535740
     },
     {
       "id": "kootenay-admreg",
@@ -1576,7 +1568,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/kootenay-admreg-latest.osm.pbf",
-      "pbf_bytes": 63639013
+      "pbf_bytes": 63639506
     },
     {
       "id": "kosovo",
@@ -1584,7 +1576,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/kosovo-latest.osm.pbf",
-      "pbf_bytes": 30589850
+      "pbf_bytes": 30588345
     },
     {
       "id": "kralovehradecky",
@@ -1592,7 +1584,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/kralovehradecky-latest.osm.pbf",
-      "pbf_bytes": 59681431
+      "pbf_bytes": 59686537
     },
     {
       "id": "kujawsko-pomorskie",
@@ -1600,7 +1592,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/kujawsko-pomorskie-latest.osm.pbf",
-      "pbf_bytes": 103330012
+      "pbf_bytes": 103396894
     },
     {
       "id": "kyrgyzstan",
@@ -1608,7 +1600,7 @@
       "country": "KG",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/kyrgyzstan-latest.osm.pbf",
-      "pbf_bytes": 52786530
+      "pbf_bytes": 52916844
     },
     {
       "id": "kyushu",
@@ -1616,7 +1608,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/kyushu-latest.osm.pbf",
-      "pbf_bytes": 308681654
+      "pbf_bytes": 308786804
     },
     {
       "id": "la-rioja",
@@ -1624,7 +1616,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/la-rioja-latest.osm.pbf",
-      "pbf_bytes": 12697629
+      "pbf_bytes": 12698129
     },
     {
       "id": "lancashire",
@@ -1632,7 +1624,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/lancashire-latest.osm.pbf",
-      "pbf_bytes": 41062464
+      "pbf_bytes": 41083067
     },
     {
       "id": "languedoc-roussillon",
@@ -1640,7 +1632,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/languedoc-roussillon-latest.osm.pbf",
-      "pbf_bytes": 267658821
+      "pbf_bytes": 267665442
     },
     {
       "id": "laos",
@@ -1648,7 +1640,7 @@
       "country": "LA",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/laos-latest.osm.pbf",
-      "pbf_bytes": 53239819
+      "pbf_bytes": 53247881
     },
     {
       "id": "latvia",
@@ -1656,7 +1648,7 @@
       "country": "LV",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/latvia-latest.osm.pbf",
-      "pbf_bytes": 139081193
+      "pbf_bytes": 139096663
     },
     {
       "id": "lebanon",
@@ -1664,7 +1656,7 @@
       "country": "LB",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/lebanon-latest.osm.pbf",
-      "pbf_bytes": 52322478
+      "pbf_bytes": 52329363
     },
     {
       "id": "leicestershire",
@@ -1672,7 +1664,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/leicestershire-latest.osm.pbf",
-      "pbf_bytes": 20152960
+      "pbf_bytes": 20153349
     },
     {
       "id": "lesotho",
@@ -1680,7 +1672,7 @@
       "country": "LS",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/lesotho-latest.osm.pbf",
-      "pbf_bytes": 126378278
+      "pbf_bytes": 126383042
     },
     {
       "id": "liaoning",
@@ -1688,7 +1680,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/liaoning-latest.osm.pbf",
-      "pbf_bytes": 27488610
+      "pbf_bytes": 27493169
     },
     {
       "id": "liberecky",
@@ -1696,7 +1688,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/liberecky-latest.osm.pbf",
-      "pbf_bytes": 46679409
+      "pbf_bytes": 46686586
     },
     {
       "id": "liberia",
@@ -1704,7 +1696,7 @@
       "country": "LR",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/liberia-latest.osm.pbf",
-      "pbf_bytes": 37279609
+      "pbf_bytes": 37279948
     },
     {
       "id": "libya",
@@ -1712,7 +1704,7 @@
       "country": "LY",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/libya-latest.osm.pbf",
-      "pbf_bytes": 76357610
+      "pbf_bytes": 76362067
     },
     {
       "id": "liechtenstein",
@@ -1720,7 +1712,7 @@
       "country": "LI",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf",
-      "pbf_bytes": 3425857
+      "pbf_bytes": 3426212
     },
     {
       "id": "limburg",
@@ -1728,7 +1720,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/limburg-latest.osm.pbf",
-      "pbf_bytes": 100411897
+      "pbf_bytes": 100422893
     },
     {
       "id": "limousin",
@@ -1736,7 +1728,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/limousin-latest.osm.pbf",
-      "pbf_bytes": 98087190
+      "pbf_bytes": 98102803
     },
     {
       "id": "lincolnshire",
@@ -1744,7 +1736,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/lincolnshire-latest.osm.pbf",
-      "pbf_bytes": 42837270
+      "pbf_bytes": 42841988
     },
     {
       "id": "lithuania",
@@ -1752,7 +1744,7 @@
       "country": "LT",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/lithuania-latest.osm.pbf",
-      "pbf_bytes": 221700139
+      "pbf_bytes": 221730609
     },
     {
       "id": "lodzkie",
@@ -1760,7 +1752,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/lodzkie-latest.osm.pbf",
-      "pbf_bytes": 129775258
+      "pbf_bytes": 129785230
     },
     {
       "id": "lorraine",
@@ -1768,7 +1760,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/lorraine-latest.osm.pbf",
-      "pbf_bytes": 170116316
+      "pbf_bytes": 170158748
     },
     {
       "id": "lubelskie",
@@ -1776,7 +1768,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/lubelskie-latest.osm.pbf",
-      "pbf_bytes": 138015871
+      "pbf_bytes": 138029501
     },
     {
       "id": "lubuskie",
@@ -1784,7 +1776,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/lubuskie-latest.osm.pbf",
-      "pbf_bytes": 61873280
+      "pbf_bytes": 61876750
     },
     {
       "id": "luxembourg",
@@ -1792,7 +1784,7 @@
       "country": "LU",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/luxembourg-latest.osm.pbf",
-      "pbf_bytes": 47238710
+      "pbf_bytes": 47240868
     },
     {
       "id": "macau",
@@ -1800,7 +1792,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/macau-latest.osm.pbf",
-      "pbf_bytes": 2946958
+      "pbf_bytes": 2947900
     },
     {
       "id": "macedonia",
@@ -1808,7 +1800,7 @@
       "country": "MK",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/macedonia-latest.osm.pbf",
-      "pbf_bytes": 29454999
+      "pbf_bytes": 29455436
     },
     {
       "id": "madagascar",
@@ -1816,7 +1808,7 @@
       "country": "MG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/madagascar-latest.osm.pbf",
-      "pbf_bytes": 386820823
+      "pbf_bytes": 386862285
     },
     {
       "id": "madrid",
@@ -1824,7 +1816,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/madrid-latest.osm.pbf",
-      "pbf_bytes": 84346134
+      "pbf_bytes": 84357595
     },
     {
       "id": "malawi",
@@ -1832,7 +1824,7 @@
       "country": "MW",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/malawi-latest.osm.pbf",
-      "pbf_bytes": 154351369
+      "pbf_bytes": 154361908
     },
     {
       "id": "malaysia-singapore-brunei",
@@ -1840,7 +1832,7 @@
       "country": "MY",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/malaysia-singapore-brunei-latest.osm.pbf",
-      "pbf_bytes": 248936516
+      "pbf_bytes": 248988507
     },
     {
       "id": "maldives",
@@ -1856,7 +1848,7 @@
       "country": "ML",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/mali-latest.osm.pbf",
-      "pbf_bytes": 172864915
+      "pbf_bytes": 172892535
     },
     {
       "id": "malopolskie",
@@ -1864,7 +1856,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/malopolskie-latest.osm.pbf",
-      "pbf_bytes": 199568866
+      "pbf_bytes": 199624944
     },
     {
       "id": "malta",
@@ -1872,7 +1864,7 @@
       "country": "MT",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/malta-latest.osm.pbf",
-      "pbf_bytes": 8833574
+      "pbf_bytes": 8834365
     },
     {
       "id": "maluku",
@@ -1880,7 +1872,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/maluku-latest.osm.pbf",
-      "pbf_bytes": 26651286
+      "pbf_bytes": 26651282
     },
     {
       "id": "manitoba",
@@ -1888,7 +1880,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/manitoba-latest.osm.pbf",
-      "pbf_bytes": 206226306
+      "pbf_bytes": 206231590
     },
     {
       "id": "marshall-islands",
@@ -1912,7 +1904,7 @@
       "country": "MR",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/mauritania-latest.osm.pbf",
-      "pbf_bytes": 30439136
+      "pbf_bytes": 30439592
     },
     {
       "id": "mauritius",
@@ -1920,7 +1912,7 @@
       "country": "MU",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/mauritius-latest.osm.pbf",
-      "pbf_bytes": 9500395
+      "pbf_bytes": 9500868
     },
     {
       "id": "mayotte",
@@ -1928,7 +1920,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/mayotte-latest.osm.pbf",
-      "pbf_bytes": 10790745
+      "pbf_bytes": 10791255
     },
     {
       "id": "mazowieckie",
@@ -1936,7 +1928,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/mazowieckie-latest.osm.pbf",
-      "pbf_bytes": 297193083
+      "pbf_bytes": 297250478
     },
     {
       "id": "mecklenburg-vorpommern",
@@ -1944,7 +1936,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/mecklenburg-vorpommern-latest.osm.pbf",
-      "pbf_bytes": 126953496
+      "pbf_bytes": 126967439
     },
     {
       "id": "melilla",
@@ -1952,7 +1944,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/melilla-latest.osm.pbf",
-      "pbf_bytes": 797213
+      "pbf_bytes": 797226
     },
     {
       "id": "merseyside",
@@ -1960,7 +1952,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/merseyside-latest.osm.pbf",
-      "pbf_bytes": 24875188
+      "pbf_bytes": 24887782
     },
     {
       "id": "mexico",
@@ -1968,7 +1960,7 @@
       "country": "MX",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/mexico-latest.osm.pbf",
-      "pbf_bytes": 640418757
+      "pbf_bytes": 640855550
     },
     {
       "id": "micronesia",
@@ -1984,7 +1976,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/midi-pyrenees-latest.osm.pbf",
-      "pbf_bytes": 359373598
+      "pbf_bytes": 359421819
     },
     {
       "id": "mittelfranken",
@@ -1992,7 +1984,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/mittelfranken-latest.osm.pbf",
-      "pbf_bytes": 94553367
+      "pbf_bytes": 94590007
     },
     {
       "id": "moldova",
@@ -2000,7 +1992,7 @@
       "country": "MD",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/moldova-latest.osm.pbf",
-      "pbf_bytes": 100421038
+      "pbf_bytes": 100435412
     },
     {
       "id": "monaco",
@@ -2008,7 +2000,7 @@
       "country": "MC",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/monaco-latest.osm.pbf",
-      "pbf_bytes": 686449
+      "pbf_bytes": 686488
     },
     {
       "id": "mongolia",
@@ -2016,7 +2008,7 @@
       "country": "MN",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/mongolia-latest.osm.pbf",
-      "pbf_bytes": 61836771
+      "pbf_bytes": 61845970
     },
     {
       "id": "montenegro",
@@ -2024,7 +2016,7 @@
       "country": "ME",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/montenegro-latest.osm.pbf",
-      "pbf_bytes": 33963643
+      "pbf_bytes": 33964905
     },
     {
       "id": "moravskoslezky",
@@ -2032,7 +2024,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/moravskoslezky-latest.osm.pbf",
-      "pbf_bytes": 79491195
+      "pbf_bytes": 79497058
     },
     {
       "id": "morocco",
@@ -2040,7 +2032,7 @@
       "country": "MA",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/morocco-latest.osm.pbf",
-      "pbf_bytes": 243013433
+      "pbf_bytes": 243017639
     },
     {
       "id": "mozambique",
@@ -2048,7 +2040,7 @@
       "country": "MZ",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/mozambique-latest.osm.pbf",
-      "pbf_bytes": 254690794
+      "pbf_bytes": 254731814
     },
     {
       "id": "muenster-regbez",
@@ -2056,7 +2048,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen/muenster-regbez-latest.osm.pbf",
-      "pbf_bytes": 139745135
+      "pbf_bytes": 139752423
     },
     {
       "id": "murcia",
@@ -2064,7 +2056,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/murcia-latest.osm.pbf",
-      "pbf_bytes": 35144034
+      "pbf_bytes": 35144681
     },
     {
       "id": "myanmar",
@@ -2072,7 +2064,7 @@
       "country": "MM",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/myanmar-latest.osm.pbf",
-      "pbf_bytes": 275923982
+      "pbf_bytes": 276006883
     },
     {
       "id": "namibia",
@@ -2080,7 +2072,7 @@
       "country": "NA",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/namibia-latest.osm.pbf",
-      "pbf_bytes": 54089501
+      "pbf_bytes": 54089626
     },
     {
       "id": "nauru",
@@ -2096,7 +2088,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/navarra-latest.osm.pbf",
-      "pbf_bytes": 37150781
+      "pbf_bytes": 37151879
     },
     {
       "id": "nepal",
@@ -2104,7 +2096,7 @@
       "country": "NP",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/nepal-latest.osm.pbf",
-      "pbf_bytes": 411712318
+      "pbf_bytes": 411720308
     },
     {
       "id": "new-brunswick",
@@ -2112,7 +2104,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/new-brunswick-latest.osm.pbf",
-      "pbf_bytes": 66199067
+      "pbf_bytes": 66199106
     },
     {
       "id": "new-caledonia",
@@ -2120,7 +2112,7 @@
       "country": "NC",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/new-caledonia-latest.osm.pbf",
-      "pbf_bytes": 14182945
+      "pbf_bytes": 14182983
     },
     {
       "id": "new-south-wales",
@@ -2128,7 +2120,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/new-south-wales-latest.osm.pbf",
-      "pbf_bytes": 265069908
+      "pbf_bytes": 265102776
     },
     {
       "id": "new-zealand",
@@ -2136,7 +2128,7 @@
       "country": "NZ",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf",
-      "pbf_bytes": 400613356
+      "pbf_bytes": 400675181
     },
     {
       "id": "newfoundland-and-labrador",
@@ -2144,7 +2136,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/newfoundland-and-labrador-latest.osm.pbf",
-      "pbf_bytes": 259096612
+      "pbf_bytes": 259098079
     },
     {
       "id": "nicaragua",
@@ -2152,7 +2144,7 @@
       "country": "NI",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/nicaragua-latest.osm.pbf",
-      "pbf_bytes": 60809400
+      "pbf_bytes": 60809891
     },
     {
       "id": "niederbayern",
@@ -2160,7 +2152,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/niederbayern-latest.osm.pbf",
-      "pbf_bytes": 94603382
+      "pbf_bytes": 94620123
     },
     {
       "id": "niedersachsen",
@@ -2168,7 +2160,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf",
-      "pbf_bytes": 500965846
+      "pbf_bytes": 501081866
     },
     {
       "id": "niger",
@@ -2176,7 +2168,7 @@
       "country": "NE",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/niger-latest.osm.pbf",
-      "pbf_bytes": 76255025
+      "pbf_bytes": 76277161
     },
     {
       "id": "nigeria",
@@ -2184,7 +2176,7 @@
       "country": "NG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/nigeria-latest.osm.pbf",
-      "pbf_bytes": 711343875
+      "pbf_bytes": 711388546
     },
     {
       "id": "ningxia",
@@ -2192,7 +2184,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/ningxia-latest.osm.pbf",
-      "pbf_bytes": 8277923
+      "pbf_bytes": 8279603
     },
     {
       "id": "niue",
@@ -2208,7 +2200,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/noord-brabant-latest.osm.pbf",
-      "pbf_bytes": 206300729
+      "pbf_bytes": 206307494
     },
     {
       "id": "noord-holland",
@@ -2216,7 +2208,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/noord-holland-latest.osm.pbf",
-      "pbf_bytes": 188265792
+      "pbf_bytes": 188302676
     },
     {
       "id": "norcal",
@@ -2224,7 +2216,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/california/norcal-latest.osm.pbf",
-      "pbf_bytes": 647665467
+      "pbf_bytes": 647769475
     },
     {
       "id": "nord-est",
@@ -2232,7 +2224,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/italy/nord-est-latest.osm.pbf",
-      "pbf_bytes": 620528273
+      "pbf_bytes": 620597190
     },
     {
       "id": "nord-norge",
@@ -2240,7 +2232,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/nord-norge-latest.osm.pbf",
-      "pbf_bytes": 405321962
+      "pbf_bytes": 405326714
     },
     {
       "id": "nord-ovest",
@@ -2248,7 +2240,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/italy/nord-ovest-latest.osm.pbf",
-      "pbf_bytes": 585314362
+      "pbf_bytes": 585385738
     },
     {
       "id": "nord-pas-de-calais",
@@ -2256,7 +2248,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/nord-pas-de-calais-latest.osm.pbf",
-      "pbf_bytes": 237345592
+      "pbf_bytes": 237373437
     },
     {
       "id": "nordeste",
@@ -2264,7 +2256,7 @@
       "country": "",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/brazil/nordeste-latest.osm.pbf",
-      "pbf_bytes": 436421052
+      "pbf_bytes": 436486496
     },
     {
       "id": "norfolk",
@@ -2272,7 +2264,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/norfolk-latest.osm.pbf",
-      "pbf_bytes": 46587557
+      "pbf_bytes": 46599038
     },
     {
       "id": "norfolk-island",
@@ -2288,7 +2280,7 @@
       "country": "",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/brazil/norte-latest.osm.pbf",
-      "pbf_bytes": 158363634
+      "pbf_bytes": 158452979
     },
     {
       "id": "north-admreg",
@@ -2296,7 +2288,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/north-admreg-latest.osm.pbf",
-      "pbf_bytes": 761357224
+      "pbf_bytes": 761357657
     },
     {
       "id": "north-caucasus-fed-district",
@@ -2304,7 +2296,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf",
-      "pbf_bytes": 127872455
+      "pbf_bytes": 127870690
     },
     {
       "id": "north-eastern-zone",
@@ -2312,7 +2304,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/north-eastern-zone-latest.osm.pbf",
-      "pbf_bytes": 109060700
+      "pbf_bytes": 109311110
     },
     {
       "id": "north-korea",
@@ -2320,7 +2312,7 @@
       "country": "KP",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/north-korea-latest.osm.pbf",
-      "pbf_bytes": 91165484
+      "pbf_bytes": 91166046
     },
     {
       "id": "north-yorkshire",
@@ -2328,7 +2320,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/north-yorkshire-latest.osm.pbf",
-      "pbf_bytes": 61021283
+      "pbf_bytes": 61033949
     },
     {
       "id": "northamptonshire",
@@ -2336,7 +2328,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/northamptonshire-latest.osm.pbf",
-      "pbf_bytes": 21983384
+      "pbf_bytes": 22010460
     },
     {
       "id": "northern-territory",
@@ -2344,7 +2336,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/northern-territory-latest.osm.pbf",
-      "pbf_bytes": 17607473
+      "pbf_bytes": 17610503
     },
     {
       "id": "northern-zone",
@@ -2352,7 +2344,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/northern-zone-latest.osm.pbf",
-      "pbf_bytes": 222328628
+      "pbf_bytes": 222364597
     },
     {
       "id": "northumberland",
@@ -2360,7 +2352,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/northumberland-latest.osm.pbf",
-      "pbf_bytes": 25992665
+      "pbf_bytes": 25993402
     },
     {
       "id": "northwest-territories",
@@ -2368,7 +2360,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/northwest-territories-latest.osm.pbf",
-      "pbf_bytes": 425522681
+      "pbf_bytes": 425523216
     },
     {
       "id": "northwestern-fed-district",
@@ -2376,7 +2368,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf",
-      "pbf_bytes": 647575760
+      "pbf_bytes": 647684956
     },
     {
       "id": "nottinghamshire",
@@ -2384,7 +2376,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/nottinghamshire-latest.osm.pbf",
-      "pbf_bytes": 38332603
+      "pbf_bytes": 38346617
     },
     {
       "id": "nova-scotia",
@@ -2392,7 +2384,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/nova-scotia-latest.osm.pbf",
-      "pbf_bytes": 98793640
+      "pbf_bytes": 98794512
     },
     {
       "id": "nusa-tenggara",
@@ -2400,7 +2392,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/nusa-tenggara-latest.osm.pbf",
-      "pbf_bytes": 173127953
+      "pbf_bytes": 173167101
     },
     {
       "id": "oberbayern",
@@ -2408,7 +2400,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/oberbayern-latest.osm.pbf",
-      "pbf_bytes": 255614859
+      "pbf_bytes": 255655327
     },
     {
       "id": "oberfranken",
@@ -2416,7 +2408,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/oberfranken-latest.osm.pbf",
-      "pbf_bytes": 94116087
+      "pbf_bytes": 94135907
     },
     {
       "id": "oberpfalz",
@@ -2424,7 +2416,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/oberpfalz-latest.osm.pbf",
-      "pbf_bytes": 85011160
+      "pbf_bytes": 85024489
     },
     {
       "id": "okanagan-admreg",
@@ -2432,7 +2424,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/okanagan-admreg-latest.osm.pbf",
-      "pbf_bytes": 44518031
+      "pbf_bytes": 44518465
     },
     {
       "id": "olomoucky",
@@ -2440,7 +2432,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/olomoucky-latest.osm.pbf",
-      "pbf_bytes": 57314056
+      "pbf_bytes": 57324297
     },
     {
       "id": "ontario",
@@ -2448,7 +2440,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/ontario-latest.osm.pbf",
-      "pbf_bytes": 966741555
+      "pbf_bytes": 966240180
     },
     {
       "id": "opolskie",
@@ -2456,7 +2448,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/opolskie-latest.osm.pbf",
-      "pbf_bytes": 54141566
+      "pbf_bytes": 54156667
     },
     {
       "id": "ostlandet",
@@ -2464,7 +2456,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/ostlandet-latest.osm.pbf",
-      "pbf_bytes": 453713058
+      "pbf_bytes": 453738641
     },
     {
       "id": "overijssel",
@@ -2472,7 +2464,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/overijssel-latest.osm.pbf",
-      "pbf_bytes": 112874789
+      "pbf_bytes": 112884212
     },
     {
       "id": "oxfordshire",
@@ -2480,7 +2472,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/oxfordshire-latest.osm.pbf",
-      "pbf_bytes": 27699378
+      "pbf_bytes": 27701307
     },
     {
       "id": "pais-vasco",
@@ -2488,7 +2480,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/pais-vasco-latest.osm.pbf",
-      "pbf_bytes": 68425631
+      "pbf_bytes": 68433522
     },
     {
       "id": "pakistan",
@@ -2496,7 +2488,7 @@
       "country": "PK",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/pakistan-latest.osm.pbf",
-      "pbf_bytes": 154472497
+      "pbf_bytes": 154492804
     },
     {
       "id": "palau",
@@ -2512,7 +2504,7 @@
       "country": "PA",
       "continent": "central-america",
       "source": "https://download.geofabrik.de/central-america/panama-latest.osm.pbf",
-      "pbf_bytes": 34152292
+      "pbf_bytes": 34852886
     },
     {
       "id": "papua",
@@ -2520,7 +2512,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/papua-latest.osm.pbf",
-      "pbf_bytes": 34795319
+      "pbf_bytes": 34819097
     },
     {
       "id": "papua-new-guinea",
@@ -2528,7 +2520,7 @@
       "country": "PG",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/papua-new-guinea-latest.osm.pbf",
-      "pbf_bytes": 53628722
+      "pbf_bytes": 53629797
     },
     {
       "id": "paraguay",
@@ -2536,7 +2528,7 @@
       "country": "PY",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/paraguay-latest.osm.pbf",
-      "pbf_bytes": 154074362
+      "pbf_bytes": 154079802
     },
     {
       "id": "pardubicky",
@@ -2544,7 +2536,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/pardubicky-latest.osm.pbf",
-      "pbf_bytes": 54857797
+      "pbf_bytes": 54893070
     },
     {
       "id": "pays-de-la-loire",
@@ -2552,7 +2544,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/pays-de-la-loire-latest.osm.pbf",
-      "pbf_bytes": 370200427
+      "pbf_bytes": 370235083
     },
     {
       "id": "peru",
@@ -2560,7 +2552,7 @@
       "country": "PE",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/peru-latest.osm.pbf",
-      "pbf_bytes": 254384773
+      "pbf_bytes": 254440559
     },
     {
       "id": "philippines",
@@ -2568,7 +2560,7 @@
       "country": "PH",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/philippines-latest.osm.pbf",
-      "pbf_bytes": 602338478
+      "pbf_bytes": 602538162
     },
     {
       "id": "picardie",
@@ -2576,7 +2568,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/picardie-latest.osm.pbf",
-      "pbf_bytes": 132619154
+      "pbf_bytes": 132641099
     },
     {
       "id": "pitcairn-islands",
@@ -2584,7 +2576,7 @@
       "country": "MH",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/pitcairn-islands-latest.osm.pbf",
-      "pbf_bytes": 114368
+      "pbf_bytes": 114479
     },
     {
       "id": "plzensky",
@@ -2592,7 +2584,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/plzensky-latest.osm.pbf",
-      "pbf_bytes": 70891823
+      "pbf_bytes": 70908980
     },
     {
       "id": "podkarpackie",
@@ -2600,7 +2592,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/podkarpackie-latest.osm.pbf",
-      "pbf_bytes": 150914794
+      "pbf_bytes": 150998998
     },
     {
       "id": "podlaskie",
@@ -2608,7 +2600,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/podlaskie-latest.osm.pbf",
-      "pbf_bytes": 77202954
+      "pbf_bytes": 77214814
     },
     {
       "id": "poitou-charentes",
@@ -2616,7 +2608,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/poitou-charentes-latest.osm.pbf",
-      "pbf_bytes": 230224542
+      "pbf_bytes": 230241085
     },
     {
       "id": "polynesie-francaise",
@@ -2624,7 +2616,7 @@
       "country": "VU",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/polynesie-francaise-latest.osm.pbf",
-      "pbf_bytes": 15634994
+      "pbf_bytes": 15635104
     },
     {
       "id": "pomorskie",
@@ -2632,7 +2624,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/pomorskie-latest.osm.pbf",
-      "pbf_bytes": 116012235
+      "pbf_bytes": 116041032
     },
     {
       "id": "portugal",
@@ -2640,7 +2632,7 @@
       "country": "PT",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/portugal-latest.osm.pbf",
-      "pbf_bytes": 419055095
+      "pbf_bytes": 419106694
     },
     {
       "id": "praha",
@@ -2648,7 +2640,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/praha-latest.osm.pbf",
-      "pbf_bytes": 44238705
+      "pbf_bytes": 44247859
     },
     {
       "id": "prince-edward-island",
@@ -2656,7 +2648,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/prince-edward-island-latest.osm.pbf",
-      "pbf_bytes": 11253344
+      "pbf_bytes": 11253650
     },
     {
       "id": "provence-alpes-cote-d-azur",
@@ -2664,7 +2656,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/provence-alpes-cote-d-azur-latest.osm.pbf",
-      "pbf_bytes": 386279282
+      "pbf_bytes": 386340951
     },
     {
       "id": "qikiqtaaluk",
@@ -2680,7 +2672,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/qinghai-latest.osm.pbf",
-      "pbf_bytes": 32441145
+      "pbf_bytes": 32444212
     },
     {
       "id": "quebec",
@@ -2688,7 +2680,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf",
-      "pbf_bytes": 1157971801
+      "pbf_bytes": 1158002442
     },
     {
       "id": "queensland",
@@ -2696,7 +2688,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/queensland-latest.osm.pbf",
-      "pbf_bytes": 196417783
+      "pbf_bytes": 196452827
     },
     {
       "id": "reunion",
@@ -2704,7 +2696,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/reunion-latest.osm.pbf",
-      "pbf_bytes": 34118828
+      "pbf_bytes": 34124558
     },
     {
       "id": "rheinland-pfalz",
@@ -2712,7 +2704,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/rheinland-pfalz-latest.osm.pbf",
-      "pbf_bytes": 265489378
+      "pbf_bytes": 265642317
     },
     {
       "id": "rhone-alpes",
@@ -2720,7 +2712,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf",
-      "pbf_bytes": 524952644
+      "pbf_bytes": 524989736
     },
     {
       "id": "romania",
@@ -2728,7 +2720,7 @@
       "country": "RO",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/romania-latest.osm.pbf",
-      "pbf_bytes": 324912958
+      "pbf_bytes": 324957673
     },
     {
       "id": "rutland",
@@ -2736,7 +2728,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/rutland-latest.osm.pbf",
-      "pbf_bytes": 1929910
+      "pbf_bytes": 1930166
     },
     {
       "id": "rwanda",
@@ -2744,7 +2736,7 @@
       "country": "RW",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/rwanda-latest.osm.pbf",
-      "pbf_bytes": 65989790
+      "pbf_bytes": 66011216
     },
     {
       "id": "saarland",
@@ -2752,7 +2744,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/saarland-latest.osm.pbf",
-      "pbf_bytes": 54529750
+      "pbf_bytes": 54533858
     },
     {
       "id": "sachsen",
@@ -2760,7 +2752,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/sachsen-latest.osm.pbf",
-      "pbf_bytes": 266309529
+      "pbf_bytes": 266355989
     },
     {
       "id": "sachsen-anhalt",
@@ -2768,7 +2760,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/sachsen-anhalt-latest.osm.pbf",
-      "pbf_bytes": 173104810
+      "pbf_bytes": 173128066
     },
     {
       "id": "saint-helena-ascension-and-tristan-da-cunha",
@@ -2776,7 +2768,7 @@
       "country": "SH",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/saint-helena-ascension-and-tristan-da-cunha-latest.osm.pbf",
-      "pbf_bytes": 892805
+      "pbf_bytes": 895622
     },
     {
       "id": "samoa",
@@ -2784,7 +2776,7 @@
       "country": "WS",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/samoa-latest.osm.pbf",
-      "pbf_bytes": 3452698
+      "pbf_bytes": 3453596
     },
     {
       "id": "sao-tome-and-principe",
@@ -2800,7 +2792,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/saskatchewan-latest.osm.pbf",
-      "pbf_bytes": 116005508
+      "pbf_bytes": 116067190
     },
     {
       "id": "schleswig-holstein",
@@ -2808,7 +2800,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/schleswig-holstein-latest.osm.pbf",
-      "pbf_bytes": 157181968
+      "pbf_bytes": 157194146
     },
     {
       "id": "schwaben",
@@ -2816,7 +2808,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/schwaben-latest.osm.pbf",
-      "pbf_bytes": 127392237
+      "pbf_bytes": 127408260
     },
     {
       "id": "scotland",
@@ -2824,7 +2816,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/scotland-latest.osm.pbf",
-      "pbf_bytes": 323319923
+      "pbf_bytes": 323395394
     },
     {
       "id": "senegal-and-gambia",
@@ -2832,7 +2824,7 @@
       "country": "SN",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/senegal-and-gambia-latest.osm.pbf",
-      "pbf_bytes": 105020650
+      "pbf_bytes": 105029617
     },
     {
       "id": "serbia",
@@ -2840,7 +2832,7 @@
       "country": "RS",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/serbia-latest.osm.pbf",
-      "pbf_bytes": 238115885
+      "pbf_bytes": 238175702
     },
     {
       "id": "seychelles",
@@ -2848,7 +2840,7 @@
       "country": "SC",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/seychelles-latest.osm.pbf",
-      "pbf_bytes": 2755525
+      "pbf_bytes": 2755577
     },
     {
       "id": "shaanxi",
@@ -2856,7 +2848,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/shaanxi-latest.osm.pbf",
-      "pbf_bytes": 90626203
+      "pbf_bytes": 91184807
     },
     {
       "id": "shandong",
@@ -2864,7 +2856,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/shandong-latest.osm.pbf",
-      "pbf_bytes": 70679526
+      "pbf_bytes": 70692721
     },
     {
       "id": "shanghai",
@@ -2872,7 +2864,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/shanghai-latest.osm.pbf",
-      "pbf_bytes": 25598329
+      "pbf_bytes": 25599318
     },
     {
       "id": "shanxi",
@@ -2880,7 +2872,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/shanxi-latest.osm.pbf",
-      "pbf_bytes": 30793473
+      "pbf_bytes": 30795513
     },
     {
       "id": "shikoku",
@@ -2888,7 +2880,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/shikoku-latest.osm.pbf",
-      "pbf_bytes": 88505853
+      "pbf_bytes": 88515135
     },
     {
       "id": "shropshire",
@@ -2896,7 +2888,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/shropshire-latest.osm.pbf",
-      "pbf_bytes": 24968736
+      "pbf_bytes": 24970742
     },
     {
       "id": "siberian-fed-district",
@@ -2904,7 +2896,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/siberian-fed-district-latest.osm.pbf",
-      "pbf_bytes": 581492717
+      "pbf_bytes": 581556904
     },
     {
       "id": "sichuan",
@@ -2912,7 +2904,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/sichuan-latest.osm.pbf",
-      "pbf_bytes": 105189267
+      "pbf_bytes": 105205420
     },
     {
       "id": "sierra-leone",
@@ -2920,7 +2912,7 @@
       "country": "SL",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/sierra-leone-latest.osm.pbf",
-      "pbf_bytes": 43025869
+      "pbf_bytes": 43029913
     },
     {
       "id": "slaskie",
@@ -2928,7 +2920,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/slaskie-latest.osm.pbf",
-      "pbf_bytes": 183739518
+      "pbf_bytes": 183767872
     },
     {
       "id": "slovakia",
@@ -2936,7 +2928,7 @@
       "country": "SK",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/slovakia-latest.osm.pbf",
-      "pbf_bytes": 341533886
+      "pbf_bytes": 341598726
     },
     {
       "id": "slovenia",
@@ -2944,7 +2936,7 @@
       "country": "SI",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/slovenia-latest.osm.pbf",
-      "pbf_bytes": 310321916
+      "pbf_bytes": 310368708
     },
     {
       "id": "socal",
@@ -2952,7 +2944,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/california/socal-latest.osm.pbf",
-      "pbf_bytes": 667087938
+      "pbf_bytes": 667144234
     },
     {
       "id": "solomon-islands",
@@ -2960,7 +2952,7 @@
       "country": "SB",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/solomon-islands-latest.osm.pbf",
-      "pbf_bytes": 11921888
+      "pbf_bytes": 11921984
     },
     {
       "id": "somalia",
@@ -2968,7 +2960,7 @@
       "country": "SO",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/somalia-latest.osm.pbf",
-      "pbf_bytes": 164579262
+      "pbf_bytes": 164586511
     },
     {
       "id": "somerset",
@@ -2976,7 +2968,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/somerset-latest.osm.pbf",
-      "pbf_bytes": 49055697
+      "pbf_bytes": 49060434
     },
     {
       "id": "sorlandet",
@@ -2984,7 +2976,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/sorlandet-latest.osm.pbf",
-      "pbf_bytes": 77011658
+      "pbf_bytes": 77012524
     },
     {
       "id": "south-africa",
@@ -2992,7 +2984,7 @@
       "country": "ZA",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/south-africa-latest.osm.pbf",
-      "pbf_bytes": 417135832
+      "pbf_bytes": 417207718
     },
     {
       "id": "south-australia",
@@ -3000,7 +2992,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/south-australia-latest.osm.pbf",
-      "pbf_bytes": 66822603
+      "pbf_bytes": 66863395
     },
     {
       "id": "south-fed-district",
@@ -3008,7 +3000,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf",
-      "pbf_bytes": 310866868
+      "pbf_bytes": 310904142
     },
     {
       "id": "south-korea",
@@ -3016,7 +3008,7 @@
       "country": "KR",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/south-korea-latest.osm.pbf",
-      "pbf_bytes": 284036989
+      "pbf_bytes": 284126489
     },
     {
       "id": "south-sudan",
@@ -3024,7 +3016,7 @@
       "country": "SS",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/south-sudan-latest.osm.pbf",
-      "pbf_bytes": 138105431
+      "pbf_bytes": 138108307
     },
     {
       "id": "south-yorkshire",
@@ -3032,7 +3024,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/south-yorkshire-latest.osm.pbf",
-      "pbf_bytes": 29796720
+      "pbf_bytes": 29799804
     },
     {
       "id": "southcoast-admreg",
@@ -3040,7 +3032,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/british-columbia/southcoast-admreg-latest.osm.pbf",
-      "pbf_bytes": 114008335
+      "pbf_bytes": 114049664
     },
     {
       "id": "southern-zone",
@@ -3048,7 +3040,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf",
-      "pbf_bytes": 557081500
+      "pbf_bytes": 557119961
     },
     {
       "id": "spain",
@@ -3056,7 +3048,7 @@
       "country": "ES",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain-latest.osm.pbf",
-      "pbf_bytes": 1465382859
+      "pbf_bytes": 1465580809
     },
     {
       "id": "sri-lanka",
@@ -3064,7 +3056,7 @@
       "country": "LK",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/sri-lanka-latest.osm.pbf",
-      "pbf_bytes": 144422406
+      "pbf_bytes": 144454176
     },
     {
       "id": "staffordshire",
@@ -3072,7 +3064,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/staffordshire-latest.osm.pbf",
-      "pbf_bytes": 30466517
+      "pbf_bytes": 30475274
     },
     {
       "id": "stredocesky",
@@ -3080,7 +3072,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/stredocesky-latest.osm.pbf",
-      "pbf_bytes": 179937601
+      "pbf_bytes": 179961512
     },
     {
       "id": "stuttgart-regbez",
@@ -3088,7 +3080,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf",
-      "pbf_bytes": 210239844
+      "pbf_bytes": 210260386
     },
     {
       "id": "sud",
@@ -3096,7 +3088,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/italy/sud-latest.osm.pbf",
-      "pbf_bytes": 411484888
+      "pbf_bytes": 411610036
     },
     {
       "id": "sudan",
@@ -3104,7 +3096,7 @@
       "country": "SD",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/sudan-latest.osm.pbf",
-      "pbf_bytes": 202712643
+      "pbf_bytes": 202729346
     },
     {
       "id": "sudeste",
@@ -3112,7 +3104,7 @@
       "country": "",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/brazil/sudeste-latest.osm.pbf",
-      "pbf_bytes": 853018598
+      "pbf_bytes": 853081124
     },
     {
       "id": "suffolk",
@@ -3120,7 +3112,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/suffolk-latest.osm.pbf",
-      "pbf_bytes": 33082974
+      "pbf_bytes": 33090999
     },
     {
       "id": "sul",
@@ -3128,7 +3120,7 @@
       "country": "",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/brazil/sul-latest.osm.pbf",
-      "pbf_bytes": 420702114
+      "pbf_bytes": 420781577
     },
     {
       "id": "sulawesi",
@@ -3136,7 +3128,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/sulawesi-latest.osm.pbf",
-      "pbf_bytes": 157830055
+      "pbf_bytes": 157834279
     },
     {
       "id": "sumatra",
@@ -3144,7 +3136,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/indonesia/sumatra-latest.osm.pbf",
-      "pbf_bytes": 283381792
+      "pbf_bytes": 283394730
     },
     {
       "id": "suriname",
@@ -3152,7 +3144,7 @@
       "country": "SR",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/suriname-latest.osm.pbf",
-      "pbf_bytes": 21261921
+      "pbf_bytes": 21266229
     },
     {
       "id": "surrey",
@@ -3160,7 +3152,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/surrey-latest.osm.pbf",
-      "pbf_bytes": 42908372
+      "pbf_bytes": 42912193
     },
     {
       "id": "svalbard-janmayen",
@@ -3168,7 +3160,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/svalbard-janmayen-latest.osm.pbf",
-      "pbf_bytes": 2724974
+      "pbf_bytes": 2759250
     },
     {
       "id": "swaziland",
@@ -3176,7 +3168,7 @@
       "country": "SZ",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/swaziland-latest.osm.pbf",
-      "pbf_bytes": 30568840
+      "pbf_bytes": 30568851
     },
     {
       "id": "sweden",
@@ -3184,7 +3176,7 @@
       "country": "SE",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/sweden-latest.osm.pbf",
-      "pbf_bytes": 811363120
+      "pbf_bytes": 811484061
     },
     {
       "id": "swietokrzyskie",
@@ -3192,7 +3184,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/swietokrzyskie-latest.osm.pbf",
-      "pbf_bytes": 86106881
+      "pbf_bytes": 86123004
     },
     {
       "id": "switzerland",
@@ -3200,7 +3192,7 @@
       "country": "CH",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/switzerland-latest.osm.pbf",
-      "pbf_bytes": 540786588
+      "pbf_bytes": 540895001
     },
     {
       "id": "syria",
@@ -3208,7 +3200,7 @@
       "country": "SY",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/syria-latest.osm.pbf",
-      "pbf_bytes": 81259277
+      "pbf_bytes": 81261967
     },
     {
       "id": "taiwan",
@@ -3216,7 +3208,7 @@
       "country": "TW",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/taiwan-latest.osm.pbf",
-      "pbf_bytes": 325383339
+      "pbf_bytes": 325381625
     },
     {
       "id": "tajikistan",
@@ -3224,7 +3216,7 @@
       "country": "TJ",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/tajikistan-latest.osm.pbf",
-      "pbf_bytes": 47991472
+      "pbf_bytes": 47991874
     },
     {
       "id": "tanzania",
@@ -3232,7 +3224,7 @@
       "country": "TZ",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/tanzania-latest.osm.pbf",
-      "pbf_bytes": 705249134
+      "pbf_bytes": 705275076
     },
     {
       "id": "tasmania",
@@ -3240,7 +3232,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/tasmania-latest.osm.pbf",
-      "pbf_bytes": 53294383
+      "pbf_bytes": 53337400
     },
     {
       "id": "thailand",
@@ -3248,7 +3240,7 @@
       "country": "TH",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/thailand-latest.osm.pbf",
-      "pbf_bytes": 325606018
+      "pbf_bytes": 325619391
     },
     {
       "id": "thueringen",
@@ -3256,7 +3248,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/thueringen-latest.osm.pbf",
-      "pbf_bytes": 158836284
+      "pbf_bytes": 158844106
     },
     {
       "id": "tianjin",
@@ -3264,7 +3256,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/tianjin-latest.osm.pbf",
-      "pbf_bytes": 14762442
+      "pbf_bytes": 14766239
     },
     {
       "id": "tibet",
@@ -3272,7 +3264,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/tibet-latest.osm.pbf",
-      "pbf_bytes": 48479706
+      "pbf_bytes": 48487996
     },
     {
       "id": "togo",
@@ -3280,7 +3272,7 @@
       "country": "TG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/togo-latest.osm.pbf",
-      "pbf_bytes": 62214049
+      "pbf_bytes": 62217282
     },
     {
       "id": "tohoku",
@@ -3288,7 +3280,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/japan/tohoku-latest.osm.pbf",
-      "pbf_bytes": 305380732
+      "pbf_bytes": 305435412
     },
     {
       "id": "tokelau",
@@ -3312,7 +3304,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/trondelag-latest.osm.pbf",
-      "pbf_bytes": 182830123
+      "pbf_bytes": 182837898
     },
     {
       "id": "tuebingen-regbez",
@@ -3320,7 +3312,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf",
-      "pbf_bytes": 124954116
+      "pbf_bytes": 124966567
     },
     {
       "id": "tunisia",
@@ -3328,7 +3320,7 @@
       "country": "TN",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/tunisia-latest.osm.pbf",
-      "pbf_bytes": 83896888
+      "pbf_bytes": 83905764
     },
     {
       "id": "turkey",
@@ -3336,7 +3328,7 @@
       "country": "TR",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/turkey-latest.osm.pbf",
-      "pbf_bytes": 639696336
+      "pbf_bytes": 639785974
     },
     {
       "id": "turkmenistan",
@@ -3344,7 +3336,7 @@
       "country": "TM",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf",
-      "pbf_bytes": 24599968
+      "pbf_bytes": 24602364
     },
     {
       "id": "tuvalu",
@@ -3360,7 +3352,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/tyne-and-wear-latest.osm.pbf",
-      "pbf_bytes": 19309052
+      "pbf_bytes": 19310118
     },
     {
       "id": "uganda",
@@ -3368,7 +3360,7 @@
       "country": "UG",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/uganda-latest.osm.pbf",
-      "pbf_bytes": 370565812
+      "pbf_bytes": 370607097
     },
     {
       "id": "ukraine",
@@ -3376,7 +3368,7 @@
       "country": "UA",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/ukraine-latest.osm.pbf",
-      "pbf_bytes": 870676344
+      "pbf_bytes": 870831457
     },
     {
       "id": "unterfranken",
@@ -3384,7 +3376,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/germany/bayern/unterfranken-latest.osm.pbf",
-      "pbf_bytes": 103919571
+      "pbf_bytes": 103924625
     },
     {
       "id": "ural-fed-district",
@@ -3392,7 +3384,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/ural-fed-district-latest.osm.pbf",
-      "pbf_bytes": 392929018
+      "pbf_bytes": 392968028
     },
     {
       "id": "uruguay",
@@ -3400,7 +3392,7 @@
       "country": "UY",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/uruguay-latest.osm.pbf",
-      "pbf_bytes": 55986968
+      "pbf_bytes": 55987474
     },
     {
       "id": "us-northeast",
@@ -3408,7 +3400,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf",
-      "pbf_bytes": 1787457553
+      "pbf_bytes": 1787644098
     },
     {
       "id": "us-alabama",
@@ -3416,7 +3408,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/alabama-latest.osm.pbf",
-      "pbf_bytes": 146832440
+      "pbf_bytes": 146906142
     },
     {
       "id": "us-alaska",
@@ -3424,7 +3416,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/alaska-latest.osm.pbf",
-      "pbf_bytes": 143684650
+      "pbf_bytes": 143694929
     },
     {
       "id": "us-arizona",
@@ -3432,7 +3424,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf",
-      "pbf_bytes": 299844352
+      "pbf_bytes": 299890272
     },
     {
       "id": "us-arkansas",
@@ -3440,7 +3432,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/arkansas-latest.osm.pbf",
-      "pbf_bytes": 98694487
+      "pbf_bytes": 98704096
     },
     {
       "id": "us-colorado",
@@ -3448,7 +3440,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf",
-      "pbf_bytes": 376718801
+      "pbf_bytes": 376758867
     },
     {
       "id": "us-connecticut",
@@ -3456,7 +3448,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/connecticut-latest.osm.pbf",
-      "pbf_bytes": 216056239
+      "pbf_bytes": 216070825
     },
     {
       "id": "us-delaware",
@@ -3464,7 +3456,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/delaware-latest.osm.pbf",
-      "pbf_bytes": 21906267
+      "pbf_bytes": 21912095
     },
     {
       "id": "us-district-of-columbia",
@@ -3472,7 +3464,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/district-of-columbia-latest.osm.pbf",
-      "pbf_bytes": 20905068
+      "pbf_bytes": 20905899
     },
     {
       "id": "us-florida",
@@ -3480,7 +3472,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/florida-latest.osm.pbf",
-      "pbf_bytes": 653296219
+      "pbf_bytes": 653364010
     },
     {
       "id": "us-georgia",
@@ -3488,7 +3480,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf",
-      "pbf_bytes": 354500394
+      "pbf_bytes": 354520299
     },
     {
       "id": "us-hawaii",
@@ -3496,7 +3488,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/hawaii-latest.osm.pbf",
-      "pbf_bytes": 26489887
+      "pbf_bytes": 26497732
     },
     {
       "id": "us-idaho",
@@ -3504,7 +3496,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/idaho-latest.osm.pbf",
-      "pbf_bytes": 127251504
+      "pbf_bytes": 127292201
     },
     {
       "id": "us-illinois",
@@ -3512,7 +3504,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/illinois-latest.osm.pbf",
-      "pbf_bytes": 355259312
+      "pbf_bytes": 355350832
     },
     {
       "id": "us-indiana",
@@ -3520,7 +3512,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/indiana-latest.osm.pbf",
-      "pbf_bytes": 196397277
+      "pbf_bytes": 196456644
     },
     {
       "id": "us-iowa",
@@ -3528,7 +3520,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/iowa-latest.osm.pbf",
-      "pbf_bytes": 132441099
+      "pbf_bytes": 132469119
     },
     {
       "id": "us-kansas",
@@ -3536,7 +3528,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/kansas-latest.osm.pbf",
-      "pbf_bytes": 114262562
+      "pbf_bytes": 114277790
     },
     {
       "id": "us-kentucky",
@@ -3544,7 +3536,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/kentucky-latest.osm.pbf",
-      "pbf_bytes": 152923177
+      "pbf_bytes": 152934385
     },
     {
       "id": "us-louisiana",
@@ -3552,7 +3544,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/louisiana-latest.osm.pbf",
-      "pbf_bytes": 145346974
+      "pbf_bytes": 145357656
     },
     {
       "id": "us-maine",
@@ -3560,7 +3552,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/maine-latest.osm.pbf",
-      "pbf_bytes": 90385082
+      "pbf_bytes": 90394692
     },
     {
       "id": "us-maryland",
@@ -3568,7 +3560,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/maryland-latest.osm.pbf",
-      "pbf_bytes": 213231733
+      "pbf_bytes": 213263441
     },
     {
       "id": "us-massachusetts",
@@ -3576,7 +3568,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf",
-      "pbf_bytes": 308879781
+      "pbf_bytes": 308923166
     },
     {
       "id": "us-michigan",
@@ -3584,7 +3576,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/michigan-latest.osm.pbf",
-      "pbf_bytes": 310162098
+      "pbf_bytes": 310211858
     },
     {
       "id": "us-minnesota",
@@ -3592,7 +3584,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/minnesota-latest.osm.pbf",
-      "pbf_bytes": 282104552
+      "pbf_bytes": 282161720
     },
     {
       "id": "us-mississippi",
@@ -3600,7 +3592,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/mississippi-latest.osm.pbf",
-      "pbf_bytes": 93529721
+      "pbf_bytes": 93550168
     },
     {
       "id": "us-missouri",
@@ -3608,7 +3600,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/missouri-latest.osm.pbf",
-      "pbf_bytes": 192812651
+      "pbf_bytes": 192853220
     },
     {
       "id": "us-montana",
@@ -3616,7 +3608,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/montana-latest.osm.pbf",
-      "pbf_bytes": 99483376
+      "pbf_bytes": 99505177
     },
     {
       "id": "us-nebraska",
@@ -3624,7 +3616,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/nebraska-latest.osm.pbf",
-      "pbf_bytes": 99477843
+      "pbf_bytes": 99499300
     },
     {
       "id": "us-nevada",
@@ -3632,7 +3624,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/nevada-latest.osm.pbf",
-      "pbf_bytes": 122478934
+      "pbf_bytes": 122525926
     },
     {
       "id": "us-new-hampshire",
@@ -3640,7 +3632,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/new-hampshire-latest.osm.pbf",
-      "pbf_bytes": 70718398
+      "pbf_bytes": 70727450
     },
     {
       "id": "us-new-jersey",
@@ -3648,7 +3640,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/new-jersey-latest.osm.pbf",
-      "pbf_bytes": 162339958
+      "pbf_bytes": 162351578
     },
     {
       "id": "us-new-mexico",
@@ -3656,7 +3648,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf",
-      "pbf_bytes": 135630193
+      "pbf_bytes": 135633307
     },
     {
       "id": "us-new-york",
@@ -3664,7 +3656,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf",
-      "pbf_bytes": 494066404
+      "pbf_bytes": 494116692
     },
     {
       "id": "us-north-carolina",
@@ -3672,7 +3664,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/north-carolina-latest.osm.pbf",
-      "pbf_bytes": 426115455
+      "pbf_bytes": 426176919
     },
     {
       "id": "us-north-dakota",
@@ -3680,7 +3672,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/north-dakota-latest.osm.pbf",
-      "pbf_bytes": 127113855
+      "pbf_bytes": 127618655
     },
     {
       "id": "us-ohio",
@@ -3688,7 +3680,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/ohio-latest.osm.pbf",
-      "pbf_bytes": 320415349
+      "pbf_bytes": 320481813
     },
     {
       "id": "us-oklahoma",
@@ -3696,7 +3688,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/oklahoma-latest.osm.pbf",
-      "pbf_bytes": 167390902
+      "pbf_bytes": 167406363
     },
     {
       "id": "us-oregon",
@@ -3704,7 +3696,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/oregon-latest.osm.pbf",
-      "pbf_bytes": 251849516
+      "pbf_bytes": 251916615
     },
     {
       "id": "us-pennsylvania",
@@ -3712,7 +3704,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/pennsylvania-latest.osm.pbf",
-      "pbf_bytes": 343253730
+      "pbf_bytes": 343334557
     },
     {
       "id": "us-puerto-rico",
@@ -3720,7 +3712,7 @@
       "country": "PR",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/puerto-rico-latest.osm.pbf",
-      "pbf_bytes": 73573365
+      "pbf_bytes": 73598383
     },
     {
       "id": "us-rhode-island",
@@ -3728,7 +3720,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf",
-      "pbf_bytes": 51806151
+      "pbf_bytes": 51812681
     },
     {
       "id": "us-south-carolina",
@@ -3736,7 +3728,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/south-carolina-latest.osm.pbf",
-      "pbf_bytes": 161885040
+      "pbf_bytes": 161920652
     },
     {
       "id": "us-south-dakota",
@@ -3744,7 +3736,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/south-dakota-latest.osm.pbf",
-      "pbf_bytes": 48019786
+      "pbf_bytes": 48061594
     },
     {
       "id": "us-tennessee",
@@ -3752,7 +3744,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/tennessee-latest.osm.pbf",
-      "pbf_bytes": 186730083
+      "pbf_bytes": 186801520
     },
     {
       "id": "us-texas",
@@ -3760,7 +3752,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/texas-latest.osm.pbf",
-      "pbf_bytes": 712037300
+      "pbf_bytes": 712170977
     },
     {
       "id": "us-us-virgin-islands",
@@ -3768,7 +3760,7 @@
       "country": "VI",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/us-virgin-islands-latest.osm.pbf",
-      "pbf_bytes": 3114441
+      "pbf_bytes": 3115395
     },
     {
       "id": "us-utah",
@@ -3776,7 +3768,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/utah-latest.osm.pbf",
-      "pbf_bytes": 166631102
+      "pbf_bytes": 166695781
     },
     {
       "id": "us-vermont",
@@ -3784,7 +3776,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/vermont-latest.osm.pbf",
-      "pbf_bytes": 45661599
+      "pbf_bytes": 45663843
     },
     {
       "id": "us-virginia",
@@ -3792,7 +3784,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/virginia-latest.osm.pbf",
-      "pbf_bytes": 425819810
+      "pbf_bytes": 425897031
     },
     {
       "id": "us-washington",
@@ -3800,7 +3792,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/washington-latest.osm.pbf",
-      "pbf_bytes": 359544747
+      "pbf_bytes": 359612357
     },
     {
       "id": "us-west-virginia",
@@ -3808,7 +3800,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/west-virginia-latest.osm.pbf",
-      "pbf_bytes": 97628723
+      "pbf_bytes": 97701443
     },
     {
       "id": "us-wisconsin",
@@ -3816,7 +3808,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/wisconsin-latest.osm.pbf",
-      "pbf_bytes": 291023481
+      "pbf_bytes": 291054626
     },
     {
       "id": "us-wyoming",
@@ -3824,7 +3816,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/us/wyoming-latest.osm.pbf",
-      "pbf_bytes": 92632160
+      "pbf_bytes": 92649300
     },
     {
       "id": "ustecky",
@@ -3832,7 +3824,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/ustecky-latest.osm.pbf",
-      "pbf_bytes": 111254267
+      "pbf_bytes": 111259734
     },
     {
       "id": "utrecht",
@@ -3840,7 +3832,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/utrecht-latest.osm.pbf",
-      "pbf_bytes": 97984204
+      "pbf_bytes": 98005953
     },
     {
       "id": "uzbekistan",
@@ -3848,7 +3840,7 @@
       "country": "UZ",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf",
-      "pbf_bytes": 121798441
+      "pbf_bytes": 121885226
     },
     {
       "id": "valencia",
@@ -3856,7 +3848,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/spain/valencia-latest.osm.pbf",
-      "pbf_bytes": 138806325
+      "pbf_bytes": 138839794
     },
     {
       "id": "vanuatu",
@@ -3872,7 +3864,7 @@
       "country": "VE",
       "continent": "south-america",
       "source": "https://download.geofabrik.de/south-america/venezuela-latest.osm.pbf",
-      "pbf_bytes": 124487584
+      "pbf_bytes": 124630406
     },
     {
       "id": "vestlandet",
@@ -3880,7 +3872,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/norway/vestlandet-latest.osm.pbf",
-      "pbf_bytes": 256509989
+      "pbf_bytes": 256523179
     },
     {
       "id": "victoria",
@@ -3888,7 +3880,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/victoria-latest.osm.pbf",
-      "pbf_bytes": 238943402
+      "pbf_bytes": 239072375
     },
     {
       "id": "vietnam",
@@ -3896,7 +3888,7 @@
       "country": "VN",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/vietnam-latest.osm.pbf",
-      "pbf_bytes": 325750725
+      "pbf_bytes": 325747202
     },
     {
       "id": "volga-fed-district",
@@ -3904,7 +3896,7 @@
       "country": "",
       "continent": "russia",
       "source": "https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf",
-      "pbf_bytes": 768787067
+      "pbf_bytes": 768929273
     },
     {
       "id": "vysocina",
@@ -3912,7 +3904,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/vysocina-latest.osm.pbf",
-      "pbf_bytes": 72965446
+      "pbf_bytes": 72989243
     },
     {
       "id": "wales",
@@ -3920,7 +3912,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/wales-latest.osm.pbf",
-      "pbf_bytes": 145556615
+      "pbf_bytes": 145584384
     },
     {
       "id": "wallis-et-futuna",
@@ -3936,7 +3928,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/warminsko-mazurskie-latest.osm.pbf",
-      "pbf_bytes": 84145995
+      "pbf_bytes": 84146564
     },
     {
       "id": "warwickshire",
@@ -3944,7 +3936,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/warwickshire-latest.osm.pbf",
-      "pbf_bytes": 24184472
+      "pbf_bytes": 24185086
     },
     {
       "id": "west-midlands",
@@ -3952,7 +3944,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/west-midlands-latest.osm.pbf",
-      "pbf_bytes": 59209242
+      "pbf_bytes": 59229033
     },
     {
       "id": "west-sussex",
@@ -3960,7 +3952,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/west-sussex-latest.osm.pbf",
-      "pbf_bytes": 48942746
+      "pbf_bytes": 48960488
     },
     {
       "id": "west-yorkshire",
@@ -3968,7 +3960,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/west-yorkshire-latest.osm.pbf",
-      "pbf_bytes": 53028092
+      "pbf_bytes": 53048831
     },
     {
       "id": "western-australia",
@@ -3976,7 +3968,7 @@
       "country": "",
       "continent": "australia-oceania",
       "source": "https://download.geofabrik.de/australia-oceania/australia/western-australia-latest.osm.pbf",
-      "pbf_bytes": 113634755
+      "pbf_bytes": 113651931
     },
     {
       "id": "western-zone",
@@ -3984,7 +3976,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/india/western-zone-latest.osm.pbf",
-      "pbf_bytes": 218524741
+      "pbf_bytes": 218634287
     },
     {
       "id": "wielkopolskie",
@@ -3992,7 +3984,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/wielkopolskie-latest.osm.pbf",
-      "pbf_bytes": 157823430
+      "pbf_bytes": 157841062
     },
     {
       "id": "wiltshire",
@@ -4000,7 +3992,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/wiltshire-latest.osm.pbf",
-      "pbf_bytes": 33892258
+      "pbf_bytes": 33893595
     },
     {
       "id": "worcestershire",
@@ -4008,7 +4000,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/united-kingdom/england/worcestershire-latest.osm.pbf",
-      "pbf_bytes": 20184578
+      "pbf_bytes": 20184912
     },
     {
       "id": "xinjiang",
@@ -4016,7 +4008,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/xinjiang-latest.osm.pbf",
-      "pbf_bytes": 47234202
+      "pbf_bytes": 47275123
     },
     {
       "id": "yemen",
@@ -4024,7 +4016,7 @@
       "country": "YE",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/yemen-latest.osm.pbf",
-      "pbf_bytes": 43021956
+      "pbf_bytes": 43022989
     },
     {
       "id": "yukon",
@@ -4032,7 +4024,7 @@
       "country": "",
       "continent": "north-america",
       "source": "https://download.geofabrik.de/north-america/canada/yukon-latest.osm.pbf",
-      "pbf_bytes": 74086339
+      "pbf_bytes": 74086419
     },
     {
       "id": "yunnan",
@@ -4040,7 +4032,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/yunnan-latest.osm.pbf",
-      "pbf_bytes": 91280687
+      "pbf_bytes": 91294228
     },
     {
       "id": "zachodniopomorskie",
@@ -4048,7 +4040,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/poland/zachodniopomorskie-latest.osm.pbf",
-      "pbf_bytes": 97111895
+      "pbf_bytes": 97129547
     },
     {
       "id": "zambia",
@@ -4056,7 +4048,7 @@
       "country": "ZM",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/zambia-latest.osm.pbf",
-      "pbf_bytes": 251595074
+      "pbf_bytes": 251601796
     },
     {
       "id": "zeeland",
@@ -4064,7 +4056,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/zeeland-latest.osm.pbf",
-      "pbf_bytes": 43775347
+      "pbf_bytes": 43776467
     },
     {
       "id": "zhejiang",
@@ -4072,7 +4064,7 @@
       "country": "",
       "continent": "asia",
       "source": "https://download.geofabrik.de/asia/china/zhejiang-latest.osm.pbf",
-      "pbf_bytes": 89169111
+      "pbf_bytes": 89190800
     },
     {
       "id": "zimbabwe",
@@ -4080,7 +4072,7 @@
       "country": "ZW",
       "continent": "africa",
       "source": "https://download.geofabrik.de/africa/zimbabwe-latest.osm.pbf",
-      "pbf_bytes": 178989150
+      "pbf_bytes": 179015958
     },
     {
       "id": "zlinsky",
@@ -4088,7 +4080,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/czech-republic/zlinsky-latest.osm.pbf",
-      "pbf_bytes": 52418048
+      "pbf_bytes": 52420629
     },
     {
       "id": "zuid-holland",
@@ -4096,7 +4088,7 @@
       "country": "",
       "continent": "europe",
       "source": "https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf",
-      "pbf_bytes": 210004796
+      "pbf_bytes": 210023328
     }
   ]
 }

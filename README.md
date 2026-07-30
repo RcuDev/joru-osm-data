@@ -21,7 +21,7 @@ Los datos de OSM se distribuyen tambien como **descarga masiva sin cuota**
 trimestre y publica un extracto por region, de modo que la app hace **una descarga** y a
 partir de ahi consulta en milisegundos y sin red.
 
-La cobertura es **mundial**: 512 regiones, ~83 GB de `.osm.pbf` de origen y ~4,3 GB de
+La cobertura es **mundial**: 511 regiones, ~83 GB de `.osm.pbf` de origen y ~4,3 GB de
 SQLite publicado. El 99,7% de las localidades del mundo resuelven a una region de menos
 de 50 MB.
 
@@ -166,9 +166,12 @@ Luego **poda por demanda**: quita las regiones que ningun destino elegiria jamas
 medido contra las 235.063 localidades del mundo de mas de 500 habitantes (GeoNames).
 Son padres cuyos hijos ya particionan el territorio (`us` frente a sus estados,
 `norway` frente a ostlandet/vestlandet/nord-norge) y regiones imposibles de bajar en un
-movil (`asia` son 799 MB de SQLite). Eso baja el corte de 530 a 512 regiones y de
-138,5 GB a 83,2 GB. Podar por **area** en vez de por demanda no funciona: se probo, y
-colapsaba el corte a 28 regiones dejando a Londres resolviendo a `europe` entero.
+movil (`asia` son 799 MB de SQLite). Tambien caen las **fantasma**: las que el indice
+anuncia pero Geofabrik ya no publica -redirigen a su portada y sirven el HTML con un
+200, asi que se descargarian "bien" y reventarian en osmium (le paso a `enfield`)-.
+Eso baja el corte de 530 a 511 regiones y de 170,9 GB a 83,3 GB. Podar por **area** en
+vez de por demanda no funciona: se probo, y colapsaba el corte a 28 regiones dejando a
+Londres resolviendo a `europe` entero.
 
 `--verify` comprueba 36 ciudades de los casos limite (Londres, Enfield, Jersey, Isla de
 Man, Canarias, Azores, Comoras, Kaliningrado, Ceuta, Groenlandia, Tahiti…). **Cada una
